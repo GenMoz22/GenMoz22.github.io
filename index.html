@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -194,24 +195,31 @@
             font-size: 1.8rem; /* Ensure code-like snippets are legible */
         }
 
-        /* Multi-column list for "Conoscenze e Certificazioni in Sviluppo" and other general modern lists */
-        .multi-column-grid {
-            @apply grid grid-cols-1 gap-x-6 gap-y-3; /* Base grid for small screens, gap-y increased */
+        /* Multi-column grid for sections like "Conoscenze in Sviluppo" and categories within Skills/Transversal */
+        .grid-with-subsections {
+            @apply grid grid-cols-1 gap-x-6 gap-y-3;
         }
         @media (min-width: 640px) { /* sm breakpoint */
-            .multi-column-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            .grid-with-subsections {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         @media (min-width: 1024px) { /* lg breakpoint */
-            .multi-column-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+            .grid-with-subsections {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
-        /* Specific styling for the actual list items within the multi-column grid */
-        .multi-column-grid .modern-list-item {
-            margin-bottom: 0; /* Remove default margin from feature-item, grid handles spacing */
+        /* Make subsections titles span full width in a grid */
+        .grid-with-subsections .col-span-full {
+            grid-column: 1 / -1; /* Span across all columns */
         }
+        .grid-with-subsections .col-span-full.mt-6 {
+             margin-top: 2.4rem; /* Specific margin-top for these titles */
+        }
+        .grid-with-subsections .modern-list-item {
+            margin-bottom: 0; /* Remove default margin as grid gap handles spacing */
+        }
+
 
         /* GitHub Button Styling */
         .github-button {
@@ -259,7 +267,7 @@
             </div>
             <!-- Hamburger menu button for mobile -->
             <div class="md:hidden">
-                <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                <button id="menu-toggle" aria-label="Toggle mobile menu" class="text-gray-800 focus:outline-none">
                     <i class="uil uil-bars text-3xl"></i>
                 </button>
             </div>
@@ -287,16 +295,16 @@
             <p class="mt-4 max-w-2xl mx-auto text-gray-700">
                 Sono un aspirante QA Tester con una solida base teorica in diverse tecnologie di sviluppo e un approccio pratico alla risoluzione dei problemi.
             </p>
-            
+            <!-- Potresti aggiungere qui una breve riga sulla tua posizione, es: "Attualmente a [Città, Nazione]" -->
         </section>
 
         <!-- Skills Section -->
         <section id="skills" class="mb-12">
             <h2 class="section-title">Le mie Conoscenze Teoriche</h2>
             <div class="card">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
+                <div class="grid-with-subsections">
                     <!-- Programming Languages Sub-section -->
-                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Linguaggi di Programmazione</h3>
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Linguaggi di Programmazione</h3>
                     <div class="modern-list-item skill-item">
                         <i class="uil uil-setting"></i>
                         <span class="skill-name">C</span>
@@ -326,7 +334,7 @@
                     </div>
 
                     <!-- Database Sub-section -->
-                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Database</h3>
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Database</h3>
                     <div class="modern-list-item skill-item">
                         <i class="uil uil-database"></i>
                         <span class="skill-name">SQLite3</span>
@@ -338,7 +346,7 @@
                     </div>
 
                     <!-- Web Frameworks & Templating Sub-section -->
-                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Framework Web & Templating</h3>
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Framework Web & Templating</h3>
                     <div class="modern-list-item skill-item">
                         <i class="uil uil-browser"></i>
                         <span class="skill-name">Flask</span>
@@ -359,7 +367,7 @@
                     </div>
 
                     <!-- Front-end & Strumenti Sub-section -->
-                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Front-end & Strumenti</h3>
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Front-end & Strumenti</h3>
                     <div class="modern-list-item skill-item">
                         <i class="uil uil-wrench"></i>
                         <span class="skill-name">Bootstrap</span>
@@ -380,7 +388,7 @@
                     </div>
 
                     <!-- Aree di Sviluppo Futuro (Specifiche per QA) Sub-section -->
-                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Aree di Sviluppo Futuro (Specifiche per QA)</h3>
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Aree di Sviluppo Futuro (Specifiche per QA)</h3>
                     <div class="modern-list-item">
                         <i class="uil uil-arrow-right"></i> <span>Selenium (in studio)</span>
                     </div>
@@ -403,56 +411,48 @@
         <!-- Transversal Skills Section -->
         <section id="transversal-skills" class="mb-12">
             <h2 class="section-title">Competenza Trasversali e Certificazioni</h2>
-            <div class="card grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div>
-                    <h3 class="font-semibold mb-3 subtitle-gradient">Certificazioni e Conoscenze Specifiche</h3>
-                    <div class="space-y-2 text-left">
-                        <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>CS50x Certificate</span>
-                        </div>
-                         <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>Operatore amministrativo contabile</span>
-                        </div>
-                         <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>EIPASS 7 Moduli User</span>
-                        </div>
-                         <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>DigComp 2.2 Altamente Specializzato 8</span>
-                        </div>
-                        <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>Introduction to Cybersecurity</span>
-                        </div>
-                        <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>Networking Basics</span>
-                        </div>
-                        <div class="modern-list-item">
-                            <i class="uil uil-file-check-alt"></i> <span>Networking Devices and Initial Configuration</span>
-                        </div>
+            <div class="card">
+                <div class="grid-with-subsections"> <!-- Applied new grid class here -->
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Certificazioni e Conoscenze Specifiche</h3>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>CS50x Certificate</span>
                     </div>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-3 subtitle-gradient">Comunicazione e Organizzazione</h3>
-                    <div class="space-y-2 text-left">
-                        <div class="modern-list-item">
-                            <i class="uil uil-comment-alt-dots"></i> <span>Dattilografia</span>
-                        </div>
-                        <div class="modern-list-item">
-                            <i class="uil uil-comment-alt-dots"></i> <span>Effective Email Communication</span>
-                        </div>
-                        <div class="modern-list-item">
-                            <i class="uil uil-comment-alt-dots"></i> <span>Managing Remote Teams</span>
-                        </div>
-                        <div class="modern-list-item">
-                            <i class="uil uil-comment-alt-dots"></i> <span>Scrittura Saggistica</span>
-                        </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>Operatore amministrativo contabile</span>
                     </div>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-3 subtitle-gradient">Altre Conoscenze</h3>
-                    <div class="space-y-2 text-left">
-                        <div class="modern-list-item">
-                            <i class="uil uil-camera"></i> <span>Photography Basics</span>
-                        </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>EIPASS 7 Moduli User</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>DigComp 2.2 Altamente Specializzato 8</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>Introduction to Cybersecurity</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>Networking Basics</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-file-check-alt"></i> <span>Networking Devices and Initial Configuration</span>
+                    </div>
+
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Comunicazione e Organizzazione</h3>
+                    <div class="modern-list-item">
+                        <i class="uil uil-comment-alt-dots"></i> <span>Dattilografia</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-comment-alt-dots"></i> <span>Effective Email Communication</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-comment-alt-dots"></i> <span>Managing Remote Teams</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-comment-alt-dots"></i> <span>Scrittura Saggistica</span>
+                    </div>
+
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Altre Conoscenze</h3>
+                    <div class="modern-list-item">
+                        <i class="uil uil-camera"></i> <span>Photography Basics</span>
                     </div>
                 </div>
             </div>
@@ -562,18 +562,19 @@
         <section id="learning-certifications" class="mb-12">
             <h2 class="section-title">Conoscenze e Certificazioni in Sviluppo</h2>
             <div class="card">
-                <div class="multi-column-grid">
+                <div class="grid-with-subsections">
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Corsi e Studi</h3>
                     <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>CS50’s Introduction to Databases with SQL (in studio per MySQL e PostgreSQL)</span>
-                    </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>ISTQB (in studio)</span>
+                        <i class="uil uil-book-open"></i> <span>Linux Essentials (NDG - in studio)</span>
                     </div>
                     <div class="modern-list-item">
                         <i class="uil uil-book-open"></i> <span>Cisco Networking Academy Junior Cybersecurity Path (in studio)</span>
                     </div>
                     <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>Linux Essentials (NDG - in studio)</span>
+                        <i class="uil uil-book-open"></i> <span>ISTQB (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>CS50’s Introduction to Databases with SQL (in studio per MySQL e PostgreSQL)</span>
                     </div>
                     <div class="modern-list-item">
                         <i class="uil uil-book-open"></i> <span>Basi di Microsoft SQL Server e MongoDB (futuro)</span>
@@ -584,8 +585,16 @@
                     <div class="modern-list-item">
                         <i class="uil uil-book-open"></i> <span>Google Project Management (in futuro)</span>
                     </div>
+
+                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Certificazioni Future</h3>
                     <div class="modern-list-item">
-                        <i class="uil uil-award"></i> <span>Certificazioni future: CompTIA A+, CompTIA Network+, CCNA</span>
+                        <i class="uil uil-award"></i> <span>CompTIA A+</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-award"></i> <span>CompTIA Network+</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-award"></i> <span>CCNA</span>
                     </div>
                 </div>
             </div>
