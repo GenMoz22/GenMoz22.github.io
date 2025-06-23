@@ -1,7 +1,628 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio QA Tester - Gennaro Mozzillo</title>
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Unicons CDN for Icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <style>
+        /* Base styles from inspiration CSS */
+        html {
+            font-size: 62.5%; /* 1rem = 10px */
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            line-height: 1.6; /* Increased line-height for better readability */
+            background-color: #f8f9fa; /* Light background */
+            color: #272341; /* Dark blue text from inspiration */
+            padding-top: 80px; /* Offset for fixed navbar height */
+        }
+        h1 {
+            font-weight: 700;
+        }
+        p, a {
+            font-size: 1.8rem; /* Increased from 1.6rem to 1.8rem */
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            transition: all .3s ease-in-out;
+        }
+
+        /* Portfolio specific overrides and new styles */
+        .container {
+            max-width: 1140px; /* Max width from inspiration */
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        @media (max-width: 75em) { /* 1200px */
+            .container { max-width: 960px; width: 100%; }
+        }
+        @media (max-width: 56.25em) { /* 900px */
+            .container { max-width: 720px; width: 100%; justify-content: center; }
+        }
+        @media (max-width: 48em) { /* 768px */
+            .container { max-width: 720px; width: 100%; }
+        }
+        @media (max-width: 37.5em) { /* 600px */
+            .container { max-width: 540px; width: 100%; padding: 0 1.5rem;}
+        }
+
+
+        .section-title {
+            margin-bottom: 4.5rem;
+            font-size: 4rem;
+            text-transform: uppercase;
+            color: #272341; /* Dark blue color */
+        }
+        @media (max-width: 37.5em) { /* 600px */
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        .card {
+            @apply bg-white p-10 rounded-lg shadow-md mb-8; /* Increased padding and bottom margin */
+        }
+        .card h3 {
+            font-size: 2.4rem; /* Equivalent to text-2xl from Tailwind (24px) */
+            margin-bottom: 2.4rem; /* Increased space after h3 (mb-6 in rem) */
+        }
+        /* Specific list items for tech/skill names that use font-mono for code-like appearance */
+        li span.font-mono {
+            font-size: 1.6rem; /* Keep code-like snippets slightly smaller for distinction */
+        }
+
+
+        /* Main Title Gradient Effect */
+        .main-title-gradient {
+            color: #5b86e5; /* Fallback for browsers that don't support text clipping */
+            /* Webkit specific for gradient text fill */
+            -webkit-text-fill-color: #5b86e5; /* Fallback for older webkit */
+        }
+        /* Standard syntax for gradient text fill (requires feature detection) */
+        @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+            .main-title-gradient {
+                background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent; /* Make text transparent to show background gradient */
+                color: transparent; /* For non-webkit browsers supporting background-clip */
+            }
+        }
+        @media (max-width: 37.5em) { /* 600px */
+            .main-title-gradient {
+                margin: 0;
+                background-image: none; /* Remove gradient on small screens for better readability */
+                -webkit-text-fill-color: #5b86e5; /* Use solid color */
+                color: #5b86e5;
+                box-shadow: none;
+            }
+        }
+
+        /* Skill Bar styles - Adjusted for better visibility and new aesthetic */
+        .skill-level-bar {
+            @apply flex space-x-0.5 p-0.5 border border-gray-300 rounded-sm;
+            width: 6.5rem; /* Equivalent to 65px for consistency, adjusts with html font-size */
+            height: 1.8rem; /* Equivalent to 18px */
+            flex-shrink: 0; /* Prevent the bar from shrinking */
+        }
+        .skill-level-segment {
+            @apply flex-1 rounded-sm; /* Use flex-1 to make segments fill available space evenly */
+        }
+        .level-basilare-fill {
+            background-color: #36d1dc; /* Teal color from inspiration gradient */
+        }
+        .level-intermedia-fill {
+            background-color: #5b86e5; /* Blue color from inspiration gradient */
+        }
+        .level-avanzata-fill {
+            @apply bg-red-500; /* Keeping red for advanced, or could use a darker blue */
+        }
+        .level-empty {
+            @apply bg-gray-300;
+        }
+        /* Removed .skill-item as a separate flex container, .modern-list-item handles it now */
+        .skill-name {
+            @apply text-gray-700 font-medium mr-auto; /* Pushed to the left */
+        }
+
+        /* Subtitle Gradient */
+        .subtitle-gradient {
+            color: #FF5733; /* Fallback for browsers that don't support text clipping */
+            background-image: linear-gradient(135deg, #FFC300 0%, #FF5733 100%); /* Gold to Orange/Red */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block; /* Essential for gradient to work on headings */
+        }
+
+
+        /* General paragraph text within sections */
+        section p {
+            color: #4B5563; /* Tailwind's gray-700 for better contrast */
+        }
+
+        /* Footer Styles (now functions as Contact Section) */
+        .portfolio-contact-footer {
+            background-color: #333;
+            padding: 4.8rem 0;
+            color: #b3b3b3;
+            margin-top: 8rem; /* Add some space above the footer */
+        }
+        .portfolio-contact-footer h2 {
+            color: #fff; /* White title for contrast */
+            margin-bottom: 3rem;
+        }
+        .portfolio-contact-footer p {
+            font-size: 1.8rem; /* Increased font size for readability */
+            margin-bottom: 1rem;
+            color: #bfbfbf; /* Lighter text for good contrast */
+        }
+        .portfolio-contact-footer a {
+            font-size: 1.8rem; /* Increased font size for links */
+            color: #36d1dc; /* Teal color for links */
+            transition: all .2s ease-in-out;
+            display: inline-block;
+            margin: 0.5rem 0; /* Space between contact links */
+        }
+        .portfolio-contact-footer a:hover {
+            color: #5b86e5; /* Hover color for footer links */
+        }
+
+        /* Styling for the new list items (features/files/certifications/learning) */
+        .modern-list-item {
+            @apply flex items-center bg-gray-50 p-3 rounded-md shadow-sm mb-3 text-left; /* Increased mb to mb-3, used items-center */
+            font-size: 1.8rem; /* Set font size for these items */
+            color: #4B5563;
+        }
+        .modern-list-item .uil {
+            font-size: 2.2rem; /* Larger icon size */
+            color: #36d1dc; /* Teal color for icons */
+            margin-right: 1rem;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .modern-list-item .font-mono {
+            font-size: 1.8rem; /* Ensure code-like snippets are legible */
+        }
+
+        /* Multi-column list for "Conoscenze e Certificazioni in Sviluppo" and other general modern lists */
+        .multi-column-grid {
+            @apply grid grid-cols-1 gap-x-6 gap-y-3; /* Base grid for small screens, gap-y increased */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .multi-column-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .multi-column-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+            }
+        }
+        /* Specific styling for the actual list items within the multi-column grid */
+        .multi-column-grid .modern-list-item {
+            margin-bottom: 0; /* Remove default margin from feature-item, grid handles spacing */
+        }
+
+        /* GitHub Button Styling */
+        .github-button {
+            @apply inline-flex items-center justify-center relative py-3 px-6 font-bold leading-none z-10 overflow-hidden rounded-md;
+            transition: all cubic-bezier(0.19, 1, 0.22, 1) .6s;
+            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%); /* Blue to Teal gradient */
+            color: #fff; /* White text */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Initial shadow */
+            margin-top: 1.5rem; /* Space above the button */
+        }
+        .github-button:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1); /* Larger shadow on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
+        .github-button .uil {
+            font-size: 2.2rem; /* Icon size for button */
+            margin-left: 1rem; /* Space between text and icon */
+        }
+
+        /* Navigation specific styles */
+        .nav-link {
+            @apply text-gray-700 hover:text-indigo-600 font-medium text-lg; /* Adjusted size and color for nav links */
+        }
+        #mobile-menu a {
+            font-size: 1.6rem; /* Adjust font size for mobile menu links */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Fixed Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4">
+        <div class="container flex justify-between items-center">
+            <!-- Logo/Name (uses main-title-gradient style) -->
+            <a href="#hero" class="text-3xl font-extrabold text-gray-900">
+                <span class="main-title-gradient">Gennaro Mozzillo</span>
+            </a>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#skills" class="nav-link">Conoscenze Teoriche</a>
+                <a href="#transversal-skills" class="nav-link">Competenze Trasversali</a>
+                <a href="#projects" class="nav-link">Progetti</a>
+                <a href="#learning-certifications" class="nav-link">In Sviluppo</a>
+                <a href="#contact" class="nav-link">Contatti</a>
+            </div>
+            <!-- Hamburger menu button for mobile -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                    <i class="uil uil-bars text-3xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu content (hidden by default, toggled by JS) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 shadow-inner">
+            <a href="#skills" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Conoscenze Teoriche</a>
+            <a href="#transversal-skills" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Competenze Trasversali</a>
+            <a href="#projects" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Progetti</a>
+            <a href="#learning-certifications" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">In Sviluppo</a>
+            <a href="#contact" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Contatti</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <!-- Header Section (Introductory and About Me) - Adjusted ID for hero section -->
+        <section id="hero" class="text-center py-12 bg-white rounded-lg shadow-lg mb-8">
+            <h1 class="text-5xl font-extrabold mb-4">
+                <span class="main-title-gradient">Gennaro Mozzillo</span>
+            </h1>
+            <p class="text-2xl text-indigo-600 font-semibold">
+                QA Tester | Portfolio
+            </p>
+            <p class="mt-4 max-w-2xl mx-auto text-gray-700">
+                Sono un aspirante QA Tester con una solida base teorica in diverse tecnologie di sviluppo e un approccio pratico alla risoluzione dei problemi. Appassionato di garantire la qualità del software e creare esperienze utente impeccabili.
+            </p>
+            <!-- Potresti aggiungere qui una breve riga sulla tua posizione, es: "Attualmente a [Città, Nazione]" -->
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-12">
+            <h2 class="section-title">Le mie Conoscenze Teoriche</h2>
+            <div class="card">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
+                    <!-- Programming Languages Sub-section -->
+                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Linguaggi di Programmazione</h3>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-setting"></i>
+                        <span class="skill-name">C</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-setting"></i>
+                        <span class="skill-name">C++</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-intermedia-fill"></div>
+                            <div class="skill-level-segment level-intermedia-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-setting"></i>
+                        <span class="skill-name">Python</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+
+                    <!-- Database Sub-section -->
+                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Database</h3>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-database"></i>
+                        <span class="skill-name">SQLite3</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+
+                    <!-- Web Frameworks & Templating Sub-section -->
+                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Framework Web & Templating</h3>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-browser"></i>
+                        <span class="skill-name">Flask</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-browser"></i>
+                        <span class="skill-name">Jinja</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+
+                    <!-- Front-end & Strumenti Sub-section -->
+                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Front-end & Strumenti</h3>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-wrench"></i>
+                        <span class="skill-name">Bootstrap</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+                    <div class="modern-list-item skill-item">
+                        <i class="uil uil-wrench"></i>
+                        <span class="skill-name">Git & GitHub</span>
+                        <div class="skill-level-bar">
+                            <div class="skill-level-segment level-basilare-fill"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                            <div class="skill-level-segment level-empty"></div>
+                        </div>
+                    </div>
+
+                    <!-- Aree di Sviluppo Futuro (Specifiche per QA) Sub-section -->
+                    <h3 class="font-semibold mb-3 subtitle-gradient text-left col-span-full mt-6">Aree di Sviluppo Futuro (Specifiche per QA)</h3>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Selenium (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Postman (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Jira (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Wave (webaim.org) per l'accessibilità (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Altri strumenti per: Email Testing, Performance Testing, Reporting, Monitoring & Logs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transversal Skills Section -->
+        <section id="transversal-skills" class="mb-12">
+            <h2 class="section-title">Competenza Trasversali e Certificazioni</h2>
+            <div class="card grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-semibold mb-3 subtitle-gradient">Certificazioni e Conoscenze Specifiche</h3>
+                    <div class="space-y-2 text-left">
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>CS50x Certificate</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>Introduction to Cybersecurity</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>Networking Basics</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>Networking Devices and Initial Configuration</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>Operatore amministrativo contabile</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>EIPASS 7 Moduli User</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-file-check-alt"></i> <span>DigComp 2.2 Altamente Specializzato 8</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-3 subtitle-gradient">Comunicazione e Organizzazione</h3>
+                    <div class="space-y-2 text-left">
+                        <div class="modern-list-item">
+                            <i class="uil uil-comment-alt-dots"></i> <span>Dattilografia</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-comment-alt-dots"></i> <span>Effective Email Communication</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-comment-alt-dots"></i> <span>Managing Remote Teams</span>
+                        </div>
+                        <div class="modern-list-item">
+                            <i class="uil uil-comment-alt-dots"></i> <span>Scrittura Saggistica</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-3 subtitle-gradient">Altre Conoscenze</h3>
+                    <div class="space-y-2 text-left">
+                        <div class="modern-list-item">
+                            <i class="uil uil-camera"></i> <span>Photography Basics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-12">
+            <h2 class="section-title">I miei Progetti</h2>
+
+            <!-- Project Card: Budget Manager -->
+            <div class="card mb-8">
+                <h3 class="text-indigo-700 mb-3 subtitle-gradient">Budget Manager</h3>
+                <p class="mb-4 text-gray-700">
+                    Un'applicazione web progettata per aiutare gli utenti a gestire le proprie finanze personali, monitorando le spese, impostando obiettivi di risparmio e visualizzando i modelli di spesa.
+                </p>
+
+                <div class="mb-4">
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">Link GitHub:</h4>
+                    <a href="https://github.com/GenMoz22/Budget-Manager" target="_blank" class="github-button">
+                        Vai alla Repository <i class="uil uil-github-alt"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10"> <!-- Increased gap here -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-2">Caratteristiche:</h4>
+                        <div class="space-y-3"> <!-- Increased space-y here -->
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Registrazione e Autenticazione Utente</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Tracciamento delle Spese (aggiungi, visualizza, elimina)</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Obiettivi di Risparmio</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Visualizzazione delle Spese con grafici interattivi</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Gestione Profilo (salario, obiettivo di risparmio, cambio password)</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Cronologia Spese</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-check-circle"></i>
+                                <span>Reset Spese</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 mb-2">File Principali:</h4>
+                        <div class="space-y-3"> <!-- Increased space-y here -->
+                            <div class="modern-list-item">
+                                <i class="uil uil-file-alt"></i>
+                                <span><span class="font-mono bg-gray-100 rounded px-1">app.py</span>: Logica principale dell'applicazione Flask.</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-file-alt"></i>
+                                <span><span class="font-mono bg-gray-100 rounded px-1">helpers.py</span>: Funzioni di utilità.</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-folder-open"></i>
+                                <span><span class="font-mono bg-gray-100 rounded px-1">templates/</span>: Directory dei template HTML.</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-folder-open"></i>
+                                <span><span class="font-mono bg-gray-100 rounded px-1">static/</span>: Directory dei file statici.</span>
+                            </div>
+                            <div class="modern-list-item">
+                                <i class="uil uil-file-text-alt"></i>
+                                <span><span class="font-mono bg-gray-100 rounded px-1">README.md</span>: Panoramica del progetto.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Projects Section (Placeholder) -->
+            <div class="card mb-8">
+                <h3 class="font-bold mb-3 subtitle-gradient">Progetti Futuri</h3>
+                <p class="mb-4 text-gray-700">
+                    In futuro, intendo aggiungere altri progetti che dimostrino le mie competenze in C++, Python, e soprattutto in automazione dei test con Selenium, per rafforzare la mia candidatura come QA Tester. Questi includeranno:
+                </p>
+                <div class="space-y-3 text-left"> <!-- Increased space-y here -->
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Progetti di test e automazione.</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Sviluppo di utility in Python/C++.</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-arrow-right"></i> <span>Esercizi pratici di QA.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conoscenze e Certificazioni in Sviluppo Section (Moved and Enhanced) -->
+        <section id="learning-certifications" class="mb-12">
+            <h2 class="section-title">Conoscenze e Certificazioni in Sviluppo</h2>
+            <div class="card">
+                <div class="multi-column-grid">
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>Linux Essentials (NDG - in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>Cisco Networking Academy Junior Cybersecurity Path (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>ISTQB (in studio)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>CS50’s Introduction to Databases with SQL (in studio per MySQL e PostgreSQL)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>Basi di Microsoft SQL Server e MongoDB (futuro)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>Agile e Scrum (conoscenza basilare dei concetti)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-book-open"></i> <span>Google Project Management (in futuro)</span>
+                    </div>
+                    <div class="modern-list-item">
+                        <i class="uil uil-award"></i> <span>Certificazioni future: CompTIA A+, CompTIA Network+, CCNA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (Footer) -->
+        <footer id="contact" class="text-center portfolio-contact-footer">
+            <h2 class="section-title">Contatti</h2>
+            <p>Sono sempre disponibile per nuove opportunità e collaborazioni. Non esitare a contattarmi!</p>
+            <p class="mt-4">
+                <i class="uil uil-linkedin-alt mr-2"></i>LinkedIn: <a href="https://www.linkedin.com/in/gennaro-mozzillo-b92911236/" target="_blank">linkedin.com/in/gennaro-mozzillo-b92911236/</a>
+            </p>
+            <p>
+                <i class="uil uil-github-alt mr-2"></i>GitHub: <a href="https://github.com/GenMoz22" target="_blank">github.com/GenMoz22</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript per il toggle del menu hamburger
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Chiudi il menu quando si clicca su un link (utile per la navigazione in-page)
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
