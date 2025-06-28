@@ -1,74 +1,161 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio QA Tester - Gennaro Mozzillo</title>
+    <meta name="description" content="Portfolio of Gennaro Mozzillo, a QA Tester with skills in Python, C++, Bootstrap, Git, and foundational knowledge in test automation tools like Selenium, Postman, and Jira.">
+    <title>QA Tester Portfolio - Gennaro Mozzillo</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Base styles */
+        /* CSS Variables for Light/Dark Mode Color Management */
+        /* These variables define color schemes that are switched by JavaScript. */
+        :root {
+            --body-bg-light: #f8f9fa; /* Light mode body background color */
+            --body-text-light: #272341; /* Light mode body text color */
+            --card-bg-light: #ffffff; /* Light mode card background color */
+            --card-shadow-light: rgba(0, 0, 0, 0.15); /* Light mode card shadow */
+            --list-item-bg-light: #f8f9fa; /* Light mode list item background color */
+            --list-item-shadow-light: rgba(0, 0, 0, 0.075); /* Light mode list item shadow */
+            --code-bg-light: #e9ecef; /* Light mode background color for code snippets */
+            --footer-bg-light: #e9ecef; /* Light mode footer background color */
+            --footer-text-light: #272341; /* Light mode footer text color */
+            --footer-link-color-light: #36d1dc; /* Light mode footer link color */
+            --footer-link-hover-color-light: #5b86e5; /* Light mode footer link hover color */
+            --footer-shadow-light: rgba(0, 0, 0, 0.05); /* Light mode footer shadow */
+            --section-title-color-light: #272341; /* Light mode section title color */
+            --text-secondary-light: #4B5563; /* Light mode secondary text color */
+            --navbar-bg-light: #ffffff; /* Light mode navbar background color */
+            --navbar-shadow-light: rgba(0, 0, 0, 0.1); /* Light mode navbar shadow */
+            --header-bg-light: #ffffff; /* Light mode header background color */
+            --header-shadow-light: rgba(0, 0, 0, 0.15); /* Light mode header shadow */
+        }
+
+        /* Dark Mode styles: These redefine CSS variables when 'dark-mode-active' class is present on the body. */
+        .dark-mode-active {
+            --body-bg-light: #212529; /* Dark mode body background color */
+            --body-text-light: #e2e6ea; /* Dark mode body text color */
+            --card-bg-light: #343a40; /* Dark mode card background color */
+            --card-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode card shadow */
+            --list-item-bg-light: #495057; /* Dark mode list item background color */
+            --list-item-shadow-light: rgba(0, 0, 0, 0.2); /* Dark mode list item shadow */
+            --code-bg-light: #6c757d; /* Dark mode code background color */
+            --footer-bg-light: #1a1e21; /* Dark mode footer background color */
+            --footer-text-light: #adb5bd; /* Dark mode footer text color */
+            --footer-link-color-light: #88d4d9; /* Dark mode footer link color */
+            --footer-link-hover-color-light: #8daedc; /* Dark mode footer link hover color */
+            --footer-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode footer shadow */
+            --section-title-color-light: #ffffff; /* Dark mode section title color */
+            --text-secondary-light: #ced4da; /* Dark mode secondary text color */
+            --navbar-bg-light: #343a40; /* Dark mode navbar background color */
+            --navbar-shadow-light: rgba(0, 0, 0, 0.5); /* Dark mode navbar shadow */
+            --header-bg-light: #343a40; /* Dark mode header background color */
+            --header-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode header shadow */
+        }
+
+        /* Base styles applied universally, using CSS variables for theme adaptation. */
         body {
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            background-color: #f8f9fa; /* Light background */
-            color: #272341; /* Dark blue text */
-            padding-top: 56px; 
+            background-color: var(--body-bg-light);
+            color: var(--body-text-light);
+            padding-top: 56px; /* Offset for fixed navbar height */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme changes */
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
         }
         p, a {
-            font-size: 1.125rem; 
+            font-size: 1.125rem; /* Base font size for paragraphs and links */
         }
         .section-title {
-            margin-bottom: 3rem; 
-            font-size: 2.5rem; 
+            margin-bottom: 3rem; /* Spacing below section titles */
+            font-size: 2.5rem; /* Larger font size for main titles */
             text-transform: uppercase;
-            color: #272341;
+            color: var(--section-title-color-light); /* Color adapts with theme */
             text-align: center;
+            transition: color 0.3s ease;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 600px) { /* Adjust font size for smaller screens */
             .section-title {
-                font-size: 1.75rem; 
+                font-size: 1.75rem;
             }
         }
+        /* Styles for the main header section, adapting its background and shadow to the theme. */
+        #title {
+            background-color: var(--header-bg-light);
+            box-shadow: 0 0.5rem 1rem var(--header-shadow-light);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
         .card {
-            padding: 2.5rem; /* p-10 from original */
-            margin-bottom: 2rem; /* mb-8 from original */
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* shadow-md */
+            padding: 2.5rem; /* Internal padding for cards */
+            margin-bottom: 2rem; /* Space below each card */
+            border-radius: 0.5rem; /* Rounded corners */
+            background-color: var(--card-bg-light); /* Background adapts with theme */
+            box-shadow: 0 0.5rem 1rem var(--card-shadow-light); /* Shadow adapts with theme */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
         }
         .card h3 {
-            font-size: 1.5rem; /* text-2xl */
-            margin-bottom: 1.5rem; /* mb-6 */
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         .list-group-item {
-            font-size: 1.125rem; /* Adjusted for consistency */
-            color: #4B5563; /* gray-700 */
+            font-size: 1.125rem;
+            color: var(--body-text-light); /* Inherits body text color for consistency */
+            transition: color 0.3s ease;
         }
         .list-group-item i {
             font-size: 1.375rem; /* Larger icon size */
-            color: #36d1dc; /* Teal color for icons */
+            color: #36d1dc; /* Teal color for icons (consistent in both modes) */
             margin-right: 0.625rem;
         }
+        /* Styling for code-like text snippets, adapting background and ensuring text breaks correctly. */
         .font-mono {
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            background-color: #e9ecef; /* gray-100 */
+            background-color: var(--code-bg-light); /* Background adapts with theme */
             border-radius: 0.25rem;
             padding: 0.125rem 0.375rem;
+            transition: background-color 0.3s ease;
+            white-space: nowrap; /* Prevents text from wrapping by default */
+            display: inline-block; /* Allows padding and background to apply correctly */
+        }
+        /* Ensures long text or filenames break only if necessary, without breaking short words like "app.py". */
+        .list-group-item span.font-mono {
+            white-space: normal; /* Allows wrapping within the span */
+            overflow-wrap: break-word; /* Breaks long words if they overflow */
+            word-break: keep-all; /* Prevents breaking within words unless forced by overflow-wrap */
+        }
+        /* For extremely long single words/filenames, allows breaking anywhere */
+        @media (max-width: 575px) { /* Targets extra small screens */
+            .list-group-item span.font-mono {
+                word-break: break-word; /* Allows breaking within words if needed on very small screens */
+            }
         }
 
-        /* Gradient & Custom Styles Bootstrap */
+
+        /* Gradient Text Styles (Main Title and Subtitles) */
+        /* These styles use CSS clipping to apply a gradient as text fill for visual effect. */
         .main-title-gradient {
-            color: #5b86e5;
             background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
+            color: transparent; /* Fallback for browsers not supporting text clipping */
         }
+        /* Fallback color for light mode if gradient text clipping is not supported. */
+        body:not(.dark-mode-active) .main-title-gradient {
+             color: #5b86e5;
+        }
+        /* Adjusts gradient for better visibility in dark mode. */
+        body.dark-mode-active .main-title-gradient {
+            background-image: linear-gradient(135deg, #88d4d9 0%, #8daedc 100%);
+        }
+        /* Overrides gradient on small screens for better legibility. */
         @media (max-width: 600px) {
             .main-title-gradient {
                 background-image: none;
@@ -78,89 +165,172 @@
         }
 
         .subtitle-gradient {
-            color: #FF5733; /* Fallback */
-            background-image: linear-gradient(135deg, #FFC300 0%, #FF5733 100%); /* Gold to Orange/Red */
+            background-image: linear-gradient(135deg, #FFC300 0%, #FF5733 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
-            display: inline-block;
+            color: transparent; /* Fallback */
+            display: inline-block; /* Essential for gradient to apply correctly */
+        }
+        /* Fallback color for light mode if gradient text clipping is not supported. */
+        body:not(.dark-mode-active) .subtitle-gradient {
+            color: #FF5733;
         }
 
-        /* Contact/Footer Section */
+        /* Custom secondary text color that adapts with the theme. */
+        .text-secondary-custom {
+            color: var(--text-secondary-light) !important; /* Overrides Bootstrap's text-secondary */
+            transition: color 0.3s ease;
+        }
+
+        /* Contact/Footer Section Styles: Adapts background, text, and link colors to the theme. */
         .portfolio-contact-footer {
-            background-color: #333;
-            padding: 3rem 0; /* py-4.8rem */
-            color: #b3b3b3;
-            margin-top: 5rem; /* mt-8rem */
+            background-color: var(--footer-bg-light);
+            padding: 3rem 0;
+            color: var(--footer-text-light);
+            margin-top: 5rem;
+            text-align: center;
+            box-shadow: 0 -0.125rem 0.25rem var(--footer-shadow-light); /* Adds a subtle shadow above the footer */
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
         .portfolio-contact-footer h2 {
-            color: #fff;
+            color: var(--section-title-color-light); /* Consistent title color */
             margin-bottom: 2rem;
+            transition: color 0.3s ease;
         }
         .portfolio-contact-footer p {
             font-size: 1.125rem;
             margin-bottom: 0.5rem;
-            color: #bfbfbf;
+            color: var(--footer-text-light);
+            transition: color 0.3s ease;
         }
         .portfolio-contact-footer a {
             font-size: 1.125rem;
-            color: #36d1dc;
+            color: var(--footer-link-color-light); /* Link color adapts with theme */
             transition: all .2s ease-in-out;
             display: inline-block;
             margin: 0.3rem 0;
         }
         .portfolio-contact-footer a:hover {
-            color: #5b86e5;
+            color: var(--footer-link-hover-color-light); /* Link hover color adapts with theme */
         }
 
-        /* GitHub Button */
+        /* GitHub Button Styling: Provides a consistent, animated button for GitHub links. */
         .github-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            padding: 0.75rem 1.5rem;
             font-weight: 700;
             line-height: 1;
             z-index: 10;
             overflow: hidden;
-            border-radius: 0.375rem; /* rounded-md */
+            border-radius: 0.375rem;
             transition: all cubic-bezier(0.19, 1, 0.22, 1) .6s;
-            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
-            color: #fff;
-            box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.08);
-            margin-top: 1rem; /* mt-1.5rem */
+            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%); /* Gradient background for the button */
+            color: #fff; /* White text on button */
+            box-shadow: 0 0.25rem 0.375rem var(--card-shadow-light), 0 0.0625rem 0.1875rem var(--card-shadow-light); /* Shadow adapts */
+            margin-top: 1rem;
             text-decoration: none;
         }
         .github-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-            color: #fff; /* Ensure text color remains white on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 0.375rem 0.625rem var(--card-shadow-light), 0 0.125rem 0.25rem var(--card-shadow-light); /* Larger shadow on hover */
+            color: #fff; /* Ensures text remains white on hover */
         }
-        .github-button .bi { /* Using Bootstrap Icons */
-            font-size: 1.375rem; /* Icon size */
-            margin-left: 0.625rem; /* Space between text and icon */
+        .github-button .bi {
+            font-size: 1.375rem;
+            margin-left: 0.625rem;
         }
 
-        /* Custom list group items for better appearance */
+        /* Custom list group items for improved visual consistency. */
         .custom-list-group .list-group-item {
             border: none;
-            background-color: #f8f9fa; /* bg-gray-50 */
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* shadow-sm */
-            margin-bottom: 0.75rem; /* mb-3 */
+            background-color: var(--list-item-bg-light); /* Background adapts with theme */
+            box-shadow: 0 0.125rem 0.25rem var(--list-item-shadow-light); /* Shadow adapts with theme */
+            margin-bottom: 0.75rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .custom-list-group .list-group-item:last-child {
-            margin-bottom: 0;
+            margin-bottom: 0; /* Removes bottom margin for the last item in a group */
         }
 
-        /* Navbar link sizing */
+        /* Navbar specific styles for theme adaptation and responsiveness. */
+        .navbar {
+            background-color: var(--navbar-bg-light) !important; /* Navbar background adapts with theme */
+            box-shadow: 0 0.125rem 0.25rem var(--navbar-shadow-light) !important; /* Navbar shadow adapts with theme */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
         .navbar-nav .nav-link {
-            font-size: 1.125rem; /* text-lg */
+            font-size: 1.125rem;
+            color: var(--body-text-light) !important; /* Ensures nav links adapt color */
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #5b86e5 !important;
+        }
+        /* Adjustments for navbar brand/toggler in dark mode if needed for visibility. */
+        body.dark-mode-active .navbar-brand,
+        body.dark-mode-active .navbar-toggler-icon {
+           
+        }
+        body.dark-mode-active .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.1); /* Lighter border for toggler in dark mode */
+        }
+        /* Specific style for offcanvas menu links if Bootstrap renders it that way on mobile */
+        body.dark-mode-active .offcanvas-body .nav-link {
+            color: #f8f9fa !important;
+        }
+
+        /* Adjustments for navbar links on medium and smaller screens. */
+        @media (max-width: 991px) { /* Targets screens smaller than large desktop (md breakpoint and below) */
+            .navbar-nav .nav-link {
+                font-size: 1rem; /* Slightly smaller font for nav links on smaller screens */
+                padding: 0.5rem 0.75rem; /* Adjust padding to make links more compact */
+            }
+        }
+
+        /* Styles for the floating Dark Mode Toggle Button, ensuring it's always visible and adapts to themes. */
+        #darkModeToggle {
+            position: fixed; /* Makes the button float */
+            bottom: 20px;    /* 20px from the bottom */
+            right: 20px;     /* 20px from the right */
+            z-index: 1050;   /* High z-index to ensure it's always on top */
+            padding: 0.8rem 1.2rem; /* Larger padding for a more prominent button */
+            font-size: 1rem;       /* Slightly larger font size */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a subtle shadow */
+            background-color: var(--card-bg-light); /* Button background adapts to theme */
+            color: var(--body-text-light); /* Button text color adapts to theme */
+            border-color: var(--text-secondary-light); /* Button border color adapts to theme */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #darkModeToggle:hover {
+            background-color: var(--list-item-bg-light); /* Slight background change on hover */
+            color: var(--body-text-light);
+            border-color: var(--body-text-light);
+        }
+        #darkModeToggle .bi {
+            margin-right: 0.5rem; /* Space between icon and text */
+        }
+        /* Responsive adjustments for the floating button on small screens (e.g., mobile phones). */
+        @media (max-width: 767px) {
+            #darkModeToggle {
+                padding: 0.6rem 0.8rem; /* Smaller padding on small screens */
+                font-size: 0.9rem;
+                bottom: 15px;
+                right: 15px;
+            }
+            #darkModeToggle .d-none.d-md-inline {
+                display: none !important; /* Hides text, showing only icon on small screens */
+            }
+            #darkModeToggle .bi {
+                margin-right: 0; /* Removes margin if text is hidden */
+            }
         }
     </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="56">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
+    <nav class="navbar navbar-expand-md navbar-light shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand text-dark fs-3 fw-bold" href="#title">
                 <span class="main-title-gradient">Gennaro Mozzillo</span>
@@ -169,21 +339,21 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#skills">Conoscenze Teoriche</a>
+                        <a class="nav-link" href="#skills">Conoscenze Teoriche</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#transversal-skills">Competenze Trasversali</a>
+                        <a class="nav-link" href="#transversal-skills">Competenze Trasversali</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#projects">Progetti</a>
+                        <a class="nav-link" href="#projects">Progetti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#learning-certifications">In Sviluppo</a>
+                        <a class="nav-link" href="#learning-certifications">In Sviluppo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#contact">Contatti</a>
+                        <a class="nav-link" href="#contact">Contatti</a>
                     </li>
                 </ul>
             </div>
@@ -191,14 +361,14 @@
     </nav>
 
     <div class="container mt-5 pt-3">
-        <section id="title" class="text-center py-5 bg-white rounded-lg shadow-lg mb-5">
+        <section id="title" class="text-center py-5 rounded-lg shadow-lg mb-5">
             <h1 class="display-4 fw-bold mb-3">
                 <span class="main-title-gradient">Gennaro Mozzillo</span>
             </h1>
             <p class="fs-4 text-primary fw-semibold">
                 QA Tester | Portfolio
             </p>
-            <p class="lead mt-4 mx-auto text-secondary" style="max-width: 600px;">
+            <p class="lead mt-4 mx-auto text-secondary-custom" style="max-width: 600px;">
                 Sono un aspirante QA Tester con una solida base teorica in diverse tecnologie di sviluppo e un approccio pratico alla risoluzione dei problemi.
             </p>
         </section>
@@ -379,12 +549,12 @@
 
             <div class="card mb-5">
                 <h3 class="text-primary mb-3 subtitle-gradient">Budget Manager</h3>
-                <p class="mb-4 text-secondary">
+                <p class="mb-4 text-secondary-custom">
                     Un'applicazione web progettata per aiutare gli utenti a gestire le proprie finanze personali, monitorando le spese, impostando obiettivi di risparmio e visualizzando i modelli di spesa.
                 </p>
 
                 <div class="mb-4">
-                    <h4 class="fs-5 fw-semibold text-secondary mb-2">Link GitHub:</h4>
+                    <h4 class="fs-5 fw-semibold text-secondary-custom mb-3">Link GitHub:</h4>
                     <a href="https://github.com/GenMoz22/Budget-Manager" target="_blank" class="github-button">
                         Vai alla Repository <i class="bi bi-github"></i>
                     </a>
@@ -392,19 +562,19 @@
 
                 <div class="row g-4">
                     <div class="col-md-6">
-                        <h4 class="fs-5 fw-semibold text-secondary mb-3">Caratteristiche:</h4>
+                        <h4 class="fs-5 fw-semibold text-secondary-custom mb-3">Caratteristiche:</h4>
                         <ul class="list-group list-group-flush custom-list-group">
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Registrazione e Autenticazione Utente</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Tracciamento delle Spese (aggiungi, visualizza, elimina)</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Obiettivi di Risparmio</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Visualizzazione delle Spese con grafici interattivi</li>
-                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Gestione Profilo (salario, obiettivo di risparmio, cambio password)</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Gestione Profilo (salario, obiettivo di risparmio, password)</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Cronologia Spese</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Reset Spese</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h4 class="fs-5 fw-semibold text-secondary mb-3">File Principali:</h4>
+                        <h4 class="fs-5 fw-semibold text-secondary-custom mb-3">File Principali:</h4>
                         <ul class="list-group list-group-flush custom-list-group">
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-file-earmark-text-fill"></i> <span class="font-mono">app.py</span>: Logica principale dell'applicazione Flask.</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-file-earmark-text-fill"></i> <span class="font-mono">helpers.py</span>: Funzioni di utilità.</li>
@@ -418,7 +588,7 @@
 
             <div class="card mb-5">
                 <h3 class="fw-bold mb-3 subtitle-gradient">Progetti Futuri</h3>
-                <p class="mb-4 text-secondary">
+                <p class="mb-4 text-secondary-custom">
                     In futuro, intendo aggiungere altri progetti che dimostrino le mie competenze in C++, Python, e soprattutto in automazione dei test con Selenium, per rafforzare la mia candidatura come QA Tester. Questi includeranno:
                 </p>
                 <ul class="list-group list-group-flush custom-list-group text-start">
@@ -495,7 +665,7 @@
         </section>
 
         <footer id="contact" class="text-center portfolio-contact-footer">
-            <h2 class="section-title text-white">Contatti</h2>
+            <h2 class="section-title">Contatti</h2>
             <p>Sono sempre disponibile per nuove opportunità e collaborazioni. Non esitare a contattarmi!</p>
             <p class="mt-4">
                 <i class="bi bi-linkedin me-2"></i>LinkedIn: <a href="https://www.linkedin.com/in/gennaro-mozzillo-b92911236/" target="_blank">linkedin.com/in/gennaro-mozzillo-b92911236/</a>
@@ -506,6 +676,55 @@
         </footer>
     </div>
 
+    <button class="btn btn-outline-secondary" id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="bi bi-moon-fill"></i> <span class="d-none d-md-inline">Dark Mode</span>
+    </button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // JavaScript for Dark Mode Toggle functionality.
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            const html = document.documentElement; // Refers to the <html> tag for Bootstrap theme attribute
+
+            // Check for saved theme preference in localStorage or system preference.
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            // Apply the theme based on saved preference or system preference.
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                enableDarkMode();
+            } else {
+                disableDarkMode();
+            }
+
+            // Event listener for the dark mode toggle button.
+            darkModeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-mode-active')) {
+                    disableDarkMode();
+                } else {
+                    enableDarkMode();
+                }
+            });
+
+            // Function to enable dark mode: Adds custom class and sets Bootstrap theme attribute.
+            function enableDarkMode() {
+                body.classList.add('dark-mode-active');
+                html.setAttribute('data-bs-theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> <span class="d-none d-md-inline">Light Mode</span>'; // Updates button text/icon
+                localStorage.setItem('theme', 'dark'); // Saves theme preference to local storage
+            }
+
+            // Function to disable dark mode (enable light mode): Removes custom class and sets Bootstrap theme attribute.
+            function disableDarkMode() {
+                body.classList.remove('dark-mode-active');
+                html.setAttribute('data-bs-theme', 'light');
+                darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i> <span class="d-none d-md-inline">Dark Mode</span>'; // Updates button text/icon
+                localStorage.setItem('theme', 'light'); // Saves theme preference to local storage
+            }
+        });
+    </script>
 </body>
 </html>
