@@ -22,14 +22,15 @@
             --card-shadow-light: rgba(0, 0, 0, 0.15); /* Light mode card shadow */
             --list-item-bg-light: #f8f9fa; /* Light mode list item background color */
             --list-item-shadow-light: rgba(0, 0, 0, 0.075); /* Light mode list item shadow */
-            --code-bg-light: #e9ecef; /* Light mode background color for code snippets */
+            --code-bg-light: #d8e0e7; /* Light mode background color for code snippets  */
             --footer-bg-light: #e9ecef; /* Light mode footer background color */
             --footer-text-light: #272341; /* Light mode footer text color */
-            --footer-link-color-light: #36d1dc; /* Light mode footer link color */
-            --footer-link-hover-color-light: #5b86e5; /* Light mode footer link hover color */
+            --footer-link-color-light: #007bff; /* Light mode footer link color  */
+            --footer-link-hover-color-light: #0056b3; /* Light mode footer link hover color  */
             --footer-shadow-light: rgba(0, 0, 0, 0.05); /* Light mode footer shadow */
             --section-title-color-light: #272341; /* Light mode section title color */
             --text-secondary-light: #4B5563; /* Light mode secondary text color */
+            --text-primary-custom-light: #0056b3; /* Custom primary text color for header  */
             --navbar-bg-light: #ffffff; /* Light mode navbar background color */
             --navbar-shadow-light: rgba(0, 0, 0, 0.1); /* Light mode navbar shadow */
             --header-bg-light: #ffffff; /* Light mode header background color */
@@ -47,11 +48,12 @@
             --code-bg-light: #6c757d; /* Dark mode code background color */
             --footer-bg-light: #1a1e21; /* Dark mode footer background color */
             --footer-text-light: #adb5bd; /* Dark mode footer text color */
-            --footer-link-color-light: #88d4d9; /* Dark mode footer link color */
-            --footer-link-hover-color-light: #8daedc; /* Dark mode footer link hover color */
+            --footer-link-color-light: #66b2ff; /* Dark mode footer link color  */
+            --footer-link-hover-color-light: #a3ccff; /* Dark mode footer link hover color  */
             --footer-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode footer shadow */
             --section-title-color-light: #ffffff; /* Dark mode section title color */
             --text-secondary-light: #ced4da; /* Dark mode secondary text color */
+            --text-primary-custom-light: #88d4d9; /* Custom primary text color for header in dark mode  */
             --navbar-bg-light: #343a40; /* Dark mode navbar background color */
             --navbar-shadow-light: rgba(0, 0, 0, 0.5); /* Dark mode navbar shadow */
             --header-bg-light: #343a40; /* Dark mode header background color */
@@ -123,6 +125,7 @@
             transition: background-color 0.3s ease;
             white-space: nowrap; /* Prevents text from wrapping by default */
             display: inline-block; /* Allows padding and background to apply correctly */
+            color: var(--body-text-light); /* Ensure font-mono text color adapts */
         }
         /* Ensures long text or filenames break only if necessary, without breaking short words like "app.py". */
         .list-group-item span.font-mono {
@@ -206,13 +209,13 @@
         }
         .portfolio-contact-footer a {
             font-size: 1.125rem;
-            color: var(--footer-link-color-light); /* Link color adapts with theme */
+            color: var(--footer-link-color-light); /* Link color adapts with theme  */
             transition: all .2s ease-in-out;
             display: inline-block;
             margin: 0.3rem 0;
         }
         .portfolio-contact-footer a:hover {
-            color: var(--footer-link-hover-color-light); /* Link hover color adapts with theme */
+            color: var(--footer-link-hover-color-light); /* Link hover color adapts with theme  */
         }
 
         /* GitHub Button Styling: Provides a consistent, animated button for GitHub links. */
@@ -267,12 +270,12 @@
             transition: color 0.3s ease;
         }
         .navbar-nav .nav-link:hover {
-            color: #5b86e5 !important;
+            color: #5b86e5 !important; /* Fixed hover color for navigation links */
         }
         /* Adjustments for navbar brand/toggler in dark mode if needed for visibility. */
         body.dark-mode-active .navbar-brand,
         body.dark-mode-active .navbar-toggler-icon {
-           
+            /* filter: invert(1); Uncomment if icons/brand text are not visible in dark mode by default */
         }
         body.dark-mode-active .navbar-toggler {
             border-color: rgba(255, 255, 255, 0.1); /* Lighter border for toggler in dark mode */
@@ -365,9 +368,7 @@
             <h1 class="display-4 fw-bold mb-3">
                 <span class="main-title-gradient">Gennaro Mozzillo</span>
             </h1>
-            <p class="fs-4 text-primary fw-semibold">
-                QA Tester | Portfolio
-            </p>
+            <p class="fs-4 fw-semibold" style="color: var(--text-primary-custom-light);">QA Tester | Portfolio</p>
             <p class="lead mt-4 mx-auto text-secondary-custom" style="max-width: 600px;">
                 Sono un aspirante QA Tester con una solida base teorica in diverse tecnologie di sviluppo e un approccio pratico alla risoluzione dei problemi.
             </p>
@@ -568,7 +569,7 @@
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Tracciamento delle Spese (aggiungi, visualizza, elimina)</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Obiettivi di Risparmio</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Visualizzazione delle Spese con grafici interattivi</li>
-                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Gestione Profilo (salario, obiettivo di risparmio, password)</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Gestione Profilo (salario, obiettivo di risparmio, cambio password)</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Cronologia Spese</li>
                             <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Reset Spese</li>
                         </ul>
