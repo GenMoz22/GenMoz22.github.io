@@ -4,529 +4,508 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio QA Tester - Gennaro Mozzillo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
-        /* Base styles from inspiration CSS */
-        html {
-            font-size: 62.5%; /* 1rem = 10px */
-            scroll-behavior: smooth;
-        }
+        /* Base styles */
         body {
             font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            line-height: 1.6; /* Increased line-height for better readability */
+            line-height: 1.6;
             background-color: #f8f9fa; /* Light background */
-            color: #272341; /* Dark blue text from inspiration */
-            padding-top: 80px; /* Offset for fixed navbar height */
+            color: #272341; /* Dark blue text */
+            padding-top: 56px; 
         }
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
         }
         p, a {
-            font-size: 1.8rem; /* Increased from 1.6rem to 1.8rem */
+            font-size: 1.125rem; 
         }
-        a {
-            text-decoration: none;
-        }
-        a:hover {
-            transition: all .3s ease-in-out;
-        }
-
-        /* Portfolio specific overrides and new styles */
-        .container {
-            max-width: 1140px; /* Max width from inspiration */
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        @media (max-width: 75em) { /* 1200px */
-            .container { max-width: 960px; width: 100%; }
-        }
-        @media (max-width: 56.25em) { /* 900px */
-            .container { max-width: 720px; width: 100%; justify-content: center; }
-        }
-        @media (max-width: 48em) { /* 768px */
-            .container { max-width: 720px; width: 100%; }
-        }
-        @media (max-width: 37.5em) { /* 600px */
-            .container { max-width: 540px; width: 100%; padding: 0 1.5rem;}
-        }
-
-
         .section-title {
-            margin-bottom: 4.5rem;
-            font-size: 4rem;
+            margin-bottom: 3rem; 
+            font-size: 2.5rem; 
             text-transform: uppercase;
-            color: #272341; /* Dark blue color */
+            color: #272341;
+            text-align: center;
         }
-        @media (max-width: 37.5em) { /* 600px */
+        @media (max-width: 600px) {
             .section-title {
-                font-size: 2.8rem;
+                font-size: 1.75rem; 
             }
         }
-
         .card {
-            @apply bg-white p-10 rounded-lg shadow-md mb-8; /* Increased padding and bottom margin */
+            padding: 2.5rem; /* p-10 from original */
+            margin-bottom: 2rem; /* mb-8 from original */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* shadow-md */
         }
         .card h3 {
-            font-size: 2.4rem; /* Equivalent to text-2xl from Tailwind (24px) */
-            margin-bottom: 2.4rem; /* Increased space after h3 (mb-6 in rem) */
+            font-size: 1.5rem; /* text-2xl */
+            margin-bottom: 1.5rem; /* mb-6 */
         }
-        /* Specific list items for tech/skill names that use font-mono for code-like appearance */
-        li span.font-mono {
-            font-size: 1.6rem; /* Keep code-like snippets slightly smaller for distinction */
+        .list-group-item {
+            font-size: 1.125rem; /* Adjusted for consistency */
+            color: #4B5563; /* gray-700 */
+        }
+        .list-group-item i {
+            font-size: 1.375rem; /* Larger icon size */
+            color: #36d1dc; /* Teal color for icons */
+            margin-right: 0.625rem;
+        }
+        .font-mono {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            background-color: #e9ecef; /* gray-100 */
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.375rem;
         }
 
-
-        /* Main Title Gradient Effect */
+        /* Gradient & Custom Styles Bootstrap */
         .main-title-gradient {
-            color: #5b86e5; /* Fallback for browsers that don't support text clipping */
-            /* Webkit specific for gradient text fill */
-            -webkit-text-fill-color: #5b86e5; /* Fallback for older webkit */
+            color: #5b86e5;
+            background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
         }
-        /* Standard syntax for gradient text fill (requires feature detection) */
-        @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+        @media (max-width: 600px) {
             .main-title-gradient {
-                background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent; /* Make text transparent to show background gradient */
-                color: transparent; /* For non-webkit browsers supporting background-clip */
-            }
-        }
-        @media (max-width: 37.5em) { /* 600px */
-            .main-title-gradient {
-                margin: 0;
-                background-image: none; /* Remove gradient on small screens for better readability */
-                -webkit-text-fill-color: #5b86e5; /* Use solid color */
+                background-image: none;
+                -webkit-text-fill-color: #5b86e5;
                 color: #5b86e5;
-                box-shadow: none;
             }
         }
 
-        /* Subtitle Gradient */
         .subtitle-gradient {
-            color: #FF5733; /* Fallback for browsers that don't support text clipping */
+            color: #FF5733; /* Fallback */
             background-image: linear-gradient(135deg, #FFC300 0%, #FF5733 100%); /* Gold to Orange/Red */
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
-            display: inline-block; /* Essential for gradient to work on headings */
+            display: inline-block;
         }
 
-
-        /* General paragraph text within sections */
-        section p {
-            color: #4B5563; /* Tailwind's gray-700 for better contrast */
-        }
-
-        /* Footer Styles (now functions as Contact Section) */
+        /* Contact/Footer Section */
         .portfolio-contact-footer {
             background-color: #333;
-            padding: 4.8rem 0;
+            padding: 3rem 0; /* py-4.8rem */
             color: #b3b3b3;
-            margin-top: 8rem; /* Add some space above the footer */
+            margin-top: 5rem; /* mt-8rem */
         }
         .portfolio-contact-footer h2 {
-            color: #fff; /* White title for contrast */
-            margin-bottom: 3rem;
+            color: #fff;
+            margin-bottom: 2rem;
         }
         .portfolio-contact-footer p {
-            font-size: 1.8rem; /* Increased font size for readability */
-            margin-bottom: 1rem;
-            color: #bfbfbf; /* Lighter text for good contrast */
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: #bfbfbf;
         }
         .portfolio-contact-footer a {
-            font-size: 1.8rem; /* Increased font size for links */
-            color: #36d1dc; /* Teal color for links */
+            font-size: 1.125rem;
+            color: #36d1dc;
             transition: all .2s ease-in-out;
             display: inline-block;
-            margin: 0.5rem 0; /* Space between contact links */
+            margin: 0.3rem 0;
         }
         .portfolio-contact-footer a:hover {
-            color: #5b86e5; /* Hover color for footer links */
+            color: #5b86e5;
         }
 
-        /* Styling for the new list items (features/files/certifications/learning) */
-        .modern-list-item {
-            @apply flex items-center bg-gray-50 p-3 rounded-md shadow-sm mb-3 text-left; /* Increased mb to mb-3, used items-center */
-            font-size: 1.8rem; /* Set font size for these items */
-            color: #4B5563;
-        }
-        .modern-list-item .uil {
-            font-size: 2.2rem; /* Larger icon size */
-            color: #36d1dc; /* Teal color for icons */
-            margin-right: 1rem;
-            flex-shrink: 0; /* Prevent icon from shrinking */
-        }
-        .modern-list-item .font-mono {
-            font-size: 1.8rem; /* Ensure code-like snippets are legible */
-        }
-
-        /* Multi-column grid for sections like "Conoscenze in Sviluppo" and categories within Skills/Transversal */
-        .grid-with-subsections {
-            @apply grid grid-cols-1 gap-x-6 gap-y-3;
-        }
-        @media (min-width: 640px) { /* sm breakpoint */
-            .grid-with-subsections {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 1024px) { /* lg breakpoint */
-            .grid-with-subsections {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        /* Make subsections titles span full width in a grid */
-        .grid-with-subsections .col-span-full {
-            grid-column: 1 / -1; /* Span across all columns */
-        }
-        .grid-with-subsections .col-span-full.mt-6 {
-            margin-top: 2.4rem; /* Specific margin-top for these titles */
-        }
-        .grid-with-subsections .modern-list-item {
-            margin-bottom: 0; /* Remove default margin as grid gap handles spacing */
-        }
-
-
-        /* GitHub Button Styling */
+        /* GitHub Button */
         .github-button {
-            @apply inline-flex items-center justify-center relative py-3 px-6 font-bold leading-none z-10 overflow-hidden rounded-md;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            font-weight: 700;
+            line-height: 1;
+            z-index: 10;
+            overflow: hidden;
+            border-radius: 0.375rem; /* rounded-md */
             transition: all cubic-bezier(0.19, 1, 0.22, 1) .6s;
-            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%); /* Blue to Teal gradient */
-            color: #fff; /* White text */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Initial shadow */
-            margin-top: 1.5rem; /* Space above the button */
+            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+            color: #fff;
+            box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.08);
+            margin-top: 1rem; /* mt-1.5rem */
+            text-decoration: none;
         }
         .github-button:hover {
-            transform: translateY(-2px); /* Slight lift on hover */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1); /* Larger shadow on hover */
-            text-decoration: none; /* Remove underline on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+            color: #fff; /* Ensure text color remains white on hover */
         }
-        .github-button .uil {
-            font-size: 2.2rem; /* Icon size for button */
-            margin-left: 1rem; /* Space between text and icon */
+        .github-button .bi { /* Using Bootstrap Icons */
+            font-size: 1.375rem; /* Icon size */
+            margin-left: 0.625rem; /* Space between text and icon */
         }
 
-        /* Navigation specific styles */
-        .nav-link {
-            @apply text-gray-700 hover:text-indigo-600 font-medium text-lg; /* Adjusted size and color for nav links */
+        /* Custom list group items for better appearance */
+        .custom-list-group .list-group-item {
+            border: none;
+            background-color: #f8f9fa; /* bg-gray-50 */
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* shadow-sm */
+            margin-bottom: 0.75rem; /* mb-3 */
         }
-        #mobile-menu a {
-            font-size: 1.6rem; /* Adjust font size for mobile menu links */
+        .custom-list-group .list-group-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Navbar link sizing */
+        .navbar-nav .nav-link {
+            font-size: 1.125rem; /* text-lg */
         }
     </style>
 </head>
-<body class="antialiased">
-    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4">
-        <div class="container flex justify-between items-center">
-            <a href="#title" class="text-3xl font-extrabold text-gray-900">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="56">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-dark fs-3 fw-bold" href="#title">
                 <span class="main-title-gradient">Gennaro Mozzillo</span>
             </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#skills" class="nav-link">Conoscenze Teoriche</a>
-                <a href="#transversal-skills" class="nav-link">Competenze Trasversali</a>
-                <a href="#projects" class="nav-link">Progetti</a>
-                <a href="#learning-certifications" class="nav-link">In Sviluppo</a>
-                <a href="#contact" class="nav-link">Contatti</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#skills">Conoscenze Teoriche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#transversal-skills">Competenze Trasversali</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#projects">Progetti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#learning-certifications">In Sviluppo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#contact">Contatti</a>
+                    </li>
+                </ul>
             </div>
-            <div class="md:hidden">
-                <button id="menu-toggle" aria-label="Toggle mobile menu" class="text-gray-800 focus:outline-none">
-                    <i class="uil uil-bars text-3xl"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 shadow-inner">
-            <a href="#skills" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Conoscenze Teoriche</a>
-            <a href="#transversal-skills" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Competenze Trasversali</a>
-            <a href="#projects" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Progetti</a>
-            <a href="#learning-certifications" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">In Sviluppo</a>
-            <a href="#contact" class="block py-2 px-4 text-gray-700 hover:bg-gray-100">Contatti</a>
         </div>
     </nav>
 
-    <div class="container">
-        <section id="title" class="text-center py-12 bg-white rounded-lg shadow-lg mb-8">
-            <h1 class="text-5xl font-extrabold mb-4">
+    <div class="container mt-5 pt-3">
+        <section id="title" class="text-center py-5 bg-white rounded-lg shadow-lg mb-5">
+            <h1 class="display-4 fw-bold mb-3">
                 <span class="main-title-gradient">Gennaro Mozzillo</span>
             </h1>
-            <p class="text-2xl text-indigo-600 font-semibold">
+            <p class="fs-4 text-primary fw-semibold">
                 QA Tester | Portfolio
             </p>
-            <p class="mt-4 max-w-2xl mx-auto text-gray-700">
+            <p class="lead mt-4 mx-auto text-secondary" style="max-width: 600px;">
                 Sono un aspirante QA Tester con una solida base teorica in diverse tecnologie di sviluppo e un approccio pratico alla risoluzione dei problemi.
             </p>
-            </section>
+        </section>
 
-        <section id="skills" class="mb-12">
+        <section id="skills" class="mb-5">
             <h2 class="section-title">Le mie Conoscenze Teoriche</h2>
             <div class="card">
-                <div class="grid-with-subsections">
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Linguaggi di Programmazione</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-setting"></i>
-                        <span class="skill-name">C</span>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Linguaggi di Programmazione</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-setting"></i>
-                        <span class="skill-name">C++</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-gear-fill"></i> C</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-setting"></i>
-                        <span class="skill-name">Python</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-gear-fill"></i> C++</li>
+                        </ul>
                     </div>
-
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Database</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-database"></i>
-                        <span class="skill-name">SQLite3</span>
-                    </div>
-
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Framework Web & Templating</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-browser"></i>
-                        <span class="skill-name">Flask</span>
-                    </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-browser"></i>
-                        <span class="skill-name">Jinja</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-gear-fill"></i> Python</li>
+                        </ul>
                     </div>
 
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Front-end & Strumenti</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-wrench"></i>
-                        <span class="skill-name">Bootstrap</span>
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Database</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-wrench"></i>
-                        <span class="skill-name">Git & GitHub</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-database-fill"></i> SQLite3</li>
+                        </ul>
                     </div>
 
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Aree di Sviluppo Futuro (Specifiche per QA)</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Selenium (in studio)</span>
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Framework Web & Templating</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Postman (in studio)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-globe"></i> Flask</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Jira (in studio)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-globe"></i> Jinja</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Wave per l'accessibilità (in studio)</span>
+
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Front-end & Strumenti</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Altri strumenti per: Email Testing, Performance Testing, Reporting, Monitoring & Logs</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-tools"></i> Bootstrap</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-github"></i> Git & GitHub</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Aree di Sviluppo Futuro (Specifiche per QA)</h3>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Selenium (in studio)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Postman (in studio)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Jira (in studio)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Wave per l'accessibilità (in studio)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Altri strumenti per: Email Testing, Performance Testing, Reporting, Monitoring & Logs</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="transversal-skills" class="mb-12">
+        <section id="transversal-skills" class="mb-5">
             <h2 class="section-title">Competenza Trasversali e Certificazioni</h2>
             <div class="card">
-                <div class="grid-with-subsections"> <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Certificazioni e Conoscenze Specifiche</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>CS50x Certificate</span>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Certificazioni e Conoscenze Specifiche</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>Operatore amministrativo contabile</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> CS50x Certificate</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>EIPASS 7 Moduli User</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> Operatore amministrativo contabile</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>DigComp 2.2 Altamente Specializzato 8</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> EIPASS 7 Moduli User</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>Introduction to Cybersecurity</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> DigComp 2.2 Altamente Specializzato 8</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>Networking Basics</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> Introduction to Cybersecurity</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-file-check-alt"></i> <span>Networking Devices and Initial Configuration</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> Networking Basics</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-journal-check"></i> Networking Devices and Initial Configuration</li>
+                        </ul>
                     </div>
 
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Comunicazione e Organizzazione</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-comment-alt-dots"></i> <span>Dattilografia</span>
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Comunicazione e Organizzazione</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-comment-alt-dots"></i> <span>Effective Email Communication</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-chat-dots-fill"></i> Dattilografia</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-comment-alt-dots"></i> <span>Managing Remote Teams</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-chat-dots-fill"></i> Effective Email Communication</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-comment-alt-dots"></i> <span>Scrittura Saggistica</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-chat-dots-fill"></i> Managing Remote Teams</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-chat-dots-fill"></i> Scrittura Saggistica</li>
+                        </ul>
                     </div>
 
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Altre Conoscenze</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-camera"></i> <span>Photography Basics</span>
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Altre Conoscenze</h3>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-camera-fill"></i> Photography Basics</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="mb-12">
+        <section id="projects" class="mb-5">
             <h2 class="section-title">I miei Progetti</h2>
 
-            <div class="card mb-8">
-                <h3 class="text-indigo-700 mb-3 subtitle-gradient">Budget Manager</h3>
-                <p class="mb-4 text-gray-700">
+            <div class="card mb-5">
+                <h3 class="text-primary mb-3 subtitle-gradient">Budget Manager</h3>
+                <p class="mb-4 text-secondary">
                     Un'applicazione web progettata per aiutare gli utenti a gestire le proprie finanze personali, monitorando le spese, impostando obiettivi di risparmio e visualizzando i modelli di spesa.
                 </p>
 
                 <div class="mb-4">
-                    <h4 class="text-xl font-semibold text-gray-700 mb-2">Link GitHub:</h4>
+                    <h4 class="fs-5 fw-semibold text-secondary mb-2">Link GitHub:</h4>
                     <a href="https://github.com/GenMoz22/Budget-Manager" target="_blank" class="github-button">
-                        Vai alla Repository <i class="uil uil-github-alt"></i>
+                        Vai alla Repository <i class="bi bi-github"></i>
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10"> <div>
-                        <h4 class="text-xl font-semibold text-gray-700 mb-2">Caratteristiche:</h4>
-                        <div class="space-y-3"> <div class="modern-list-item">
-                                <i class="uil uil-check-circle"></i>
-                                <span>Registrazione e Autenticazione Utente</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-check-circle"></i>
-                                <span>Tracciamento delle Spese (aggiungi, visualizza, elimina)</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-check-circle"></i>
-                                <span>Obiettivi di Risparmio</span>
-                            </div>
-
-                            <div class="modern-list-item">
-                                <i class="uil uil-check-circle"></i>
-                                <span>Gestione Profilo (salario, obiettivo di risparmio, cambio password)</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-check-circle"></i>
-                                <span>Cronologia Spese</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-check-circle"></i>
-                                <span>Reset Spese</span>
-                            </div>
-                        </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h4 class="fs-5 fw-semibold text-secondary mb-3">Caratteristiche:</h4>
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Registrazione e Autenticazione Utente</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Tracciamento delle Spese (aggiungi, visualizza, elimina)</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Obiettivi di Risparmio</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Visualizzazione delle Spese con grafici interattivi</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Gestione Profilo (salario, obiettivo di risparmio, cambio password)</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Cronologia Spese</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-check-circle-fill"></i> Reset Spese</li>
+                        </ul>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-semibold text-gray-700 mb-2">File Principali:</h4>
-                        <div class="space-y-3"> <div class="modern-list-item">
-                                <i class="uil uil-file-alt"></i>
-                                <span><span class="font-mono bg-gray-100 rounded px-1">app.py</span>: Logica principale dell'applicazione Flask.</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-file-alt"></i>
-                                <span><span class="font-mono bg-gray-100 rounded px-1">helpers.py</span>: Funzioni di utilità.</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-folder-open"></i>
-                                <span><span class="font-mono bg-gray-100 rounded px-1">templates/</span>: Directory dei template HTML.</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-folder-open"></i>
-                                <span><span class="font-mono bg-gray-100 rounded px-1">static/</span>: Directory dei file statici.</span>
-                            </div>
-                            <div class="modern-list-item">
-                                <i class="uil uil-file-text-alt"></i>
-                                <span><span class="font-mono bg-gray-100 rounded px-1">README.md</span>: Panoramica del progetto.</span>
-                            </div>
-                        </div>
+                    <div class="col-md-6">
+                        <h4 class="fs-5 fw-semibold text-secondary mb-3">File Principali:</h4>
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-file-earmark-text-fill"></i> <span class="font-mono">app.py</span>: Logica principale dell'applicazione Flask.</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-file-earmark-text-fill"></i> <span class="font-mono">helpers.py</span>: Funzioni di utilità.</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-folder-fill"></i> <span class="font-mono">templates/</span>: Directory dei template HTML.</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-folder-fill"></i> <span class="font-mono">static/</span>: Directory dei file statici.</li>
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-file-earmark-text-fill"></i> <span class="font-mono">README.md</span>: Panoramica del progetto.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="card mb-8">
-                <h3 class="font-bold mb-3 subtitle-gradient">Progetti Futuri</h3>
-                <p class="mb-4 text-gray-700">
+            <div class="card mb-5">
+                <h3 class="fw-bold mb-3 subtitle-gradient">Progetti Futuri</h3>
+                <p class="mb-4 text-secondary">
                     In futuro, intendo aggiungere altri progetti che dimostrino le mie competenze in C++, Python, e soprattutto in automazione dei test con Selenium, per rafforzare la mia candidatura come QA Tester. Questi includeranno:
                 </p>
-                <div class="space-y-3 text-left"> <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Progetti di test e automazione.</span>
-                    </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Sviluppo di utility in Python/C++.</span>
-                    </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-arrow-right"></i> <span>Esercizi pratici di QA.</span>
-                    </div>
-                </div>
+                <ul class="list-group list-group-flush custom-list-group text-start">
+                    <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Progetti di test e automazione.</li>
+                    <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Sviluppo di utility in Python/C++.</li>
+                    <li class="list-group-item d-flex align-items-center"><i class="bi bi-arrow-right-circle-fill"></i> Esercizi pratici di QA.</li>
+                </ul>
             </div>
         </section>
 
-        <section id="learning-certifications" class="mb-12">
+        <section id="learning-certifications" class="mb-5">
             <h2 class="section-title">Conoscenze e Certificazioni in Sviluppo</h2>
             <div class="card">
-                <div class="grid-with-subsections">
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Corsi e Studi</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>Linux Essentials (NDG - in studio)</span>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Corsi e Studi</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>Cisco Networking Academy Junior Cybersecurity Path (in studio)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> Linux Essentials (NDG - in studio)</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>ISTQB (in studio)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> Cisco Networking Academy Junior Cybersecurity Path (in studio)</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>CS50’s Introduction to Databases with SQL (in studio per MySQL e PostgreSQL)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> ISTQB (in studio)</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>Basi di Microsoft SQL Server e MongoDB (futuro)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> CS50’s Introduction to Databases with SQL (in studio per MySQL e PostgreSQL)</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>Agile e Scrum (conoscenza basilare dei concetti)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> Basi di Microsoft SQL Server e MongoDB (futuro)</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-book-open"></i> <span>Google Project Management (in futuro)</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> Agile e Scrum (conoscenza basilare dei concetti)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-book-fill"></i> Google Project Management (in futuro)</li>
+                        </ul>
                     </div>
 
-                    <h3 class="font-semibold subtitle-gradient text-left col-span-full mt-6">Certificazioni Future</h3>
-                    <div class="modern-list-item">
-                        <i class="uil uil-award"></i> <span>CompTIA A+</span>
+                    <div class="col-12">
+                        <h3 class="fw-semibold subtitle-gradient text-start mt-4">Certificazioni Future</h3>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-award"></i> <span>CompTIA Network+</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-award-fill"></i> CompTIA A+</li>
+                        </ul>
                     </div>
-                    <div class="modern-list-item">
-                        <i class="uil uil-award"></i> <span>CCNA</span>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-award-fill"></i> CompTIA Network+</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item d-flex align-items-center"><i class="bi bi-award-fill"></i> CCNA</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <footer id="contact" class="text-center portfolio-contact-footer">
-            <h2 class="section-title">Contatti</h2>
+            <h2 class="section-title text-white">Contatti</h2>
             <p>Sono sempre disponibile per nuove opportunità e collaborazioni. Non esitare a contattarmi!</p>
             <p class="mt-4">
-                <i class="uil uil-linkedin-alt mr-2"></i>LinkedIn: <a href="https://www.linkedin.com/in/gennaro-mozzillo-b92911236/" target="_blank">linkedin.com/in/gennaro-mozzillo-b92911236/</a>
+                <i class="bi bi-linkedin me-2"></i>LinkedIn: <a href="https://www.linkedin.com/in/gennaro-mozzillo-b92911236/" target="_blank">linkedin.com/in/gennaro-mozzillo-b92911236/</a>
             </p>
             <p>
-                <i class="uil uil-github-alt mr-2"></i>GitHub: <a href="https://github.com/GenMoz22" target="_blank">github.com/GenMoz22</a>
+                <i class="bi bi-github me-2"></i>GitHub: <a href="https://github.com/GenMoz22" target="_blank">github.com/GenMoz22</a>
             </p>
         </footer>
     </div>
 
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            var mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(item => {
-            item.addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
