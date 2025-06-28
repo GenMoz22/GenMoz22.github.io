@@ -5,144 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Gennaro Mozzillo, a QA Tester with skills in Python, C++, Bootstrap, Git, and foundational knowledge in test automation tools like Selenium, Postman, and Jira.">
     <title>QA Tester Portfolio - Gennaro Mozzillo</title>
-    
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* CSS Variables for Light/Dark Mode Color Management */
-        /* These variables define color schemes that are switched by JavaScript. */
+        /* CSS Variables for Light/Dark Mode Color Management with Fallbacks for Older Browsers */
         :root {
-            --body-bg-light: #f8f9fa; /* Light mode body background color */
-            --body-text-light: #272341; /* Light mode body text color */
-            --card-bg-light: #ffffff; /* Light mode card background color */
-            --card-shadow-light: rgba(0, 0, 0, 0.15); /* Light mode card shadow */
-            --list-item-bg-light: #f8f9fa; /* Light mode list item background color */
-            --list-item-shadow-light: rgba(0, 0, 0, 0.075); /* Light mode list item shadow */
-            --code-bg-light: #d8e0e7; /* Light mode background color for code snippets  */
-            --footer-bg-light: #e9ecef; /* Light mode footer background color */
-            --footer-text-light: #272341; /* Light mode footer text color */
-            --footer-link-color-light: #007bff; /* Light mode footer link color  */
-            --footer-link-hover-color-light: #0056b3; /* Light mode footer link hover color  */
-            --footer-shadow-light: rgba(0, 0, 0, 0.05); /* Light mode footer shadow */
-            --section-title-color-light: #272341; /* Light mode section title color */
-            --text-secondary-light: #4B5563; /* Light mode secondary text color */
-            --text-primary-custom-light: #0056b3; /* Custom primary text color for header  */
-            --navbar-bg-light: #ffffff; /* Light mode navbar background color */
-            --navbar-shadow-light: rgba(0, 0, 0, 0.1); /* Light mode navbar shadow */
-            --header-bg-light: #ffffff; /* Light mode header background color */
-            --header-shadow-light: rgba(0, 0, 0, 0.15); /* Light mode header shadow */
+            /* Fallback values for browsers that don't support CSS variables */
+            background-color: #f8f9fa;
+            color: #272341;
+
+            --body-bg-light: #f8f9fa;
+            --body-text-light: #272341;
+            --card-bg-light: #ffffff;
+            --card-shadow-light: rgba(0, 0, 0, 0.15);
+            --list-item-bg-light: #f8f9fa;
+            --list-item-shadow-light: rgba(0, 0, 0, 0.075);
+            --code-bg-light: #d8e0e7;
+            --footer-bg-light: #e9ecef;
+            --footer-text-light: #272341;
+            --footer-link-color-light: #0056b3;
+            --footer-link-hover-color-light: #003366;
+            --footer-shadow-light: rgba(0, 0, 0, 0.05);
+            --section-title-color-light: #272341;
+            --text-secondary-light: #4B5563;
+            --text-primary-custom-light: #0056b3;
+            --navbar-bg-light: #ffffff;
+            --navbar-shadow-light: rgba(0, 0, 0, 0.1);
+            --header-bg-light: #ffffff;
+            --header-shadow-light: rgba(0, 0, 0, 0.15);
         }
 
-        /* Dark Mode styles: These redefine CSS variables when 'dark-mode-active' class is present on the body. */
+        /* Dark Mode styles, redefining CSS variables when 'dark-mode-active' class is present */
         .dark-mode-active {
-            --body-bg-light: #212529; /* Dark mode body background color */
-            --body-text-light: #e2e6ea; /* Dark mode body text color */
-            --card-bg-light: #343a40; /* Dark mode card background color */
-            --card-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode card shadow */
-            --list-item-bg-light: #495057; /* Dark mode list item background color */
-            --list-item-shadow-light: rgba(0, 0, 0, 0.2); /* Dark mode list item shadow */
-            --code-bg-light: #6c757d; /* Dark mode code background color */
-            --footer-bg-light: #1a1e21; /* Dark mode footer background color */
-            --footer-text-light: #adb5bd; /* Dark mode footer text color */
-            --footer-link-color-light: #66b2ff; /* Dark mode footer link color  */
-            --footer-link-hover-color-light: #a3ccff; /* Dark mode footer link hover color  */
-            --footer-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode footer shadow */
-            --section-title-color-light: #ffffff; /* Dark mode section title color */
-            --text-secondary-light: #ced4da; /* Dark mode secondary text color */
-            --text-primary-custom-light: #88d4d9; /* Custom primary text color for header in dark mode  */
-            --navbar-bg-light: #343a40; /* Dark mode navbar background color */
-            --navbar-shadow-light: rgba(0, 0, 0, 0.5); /* Dark mode navbar shadow */
-            --header-bg-light: #343a40; /* Dark mode header background color */
-            --header-shadow-light: rgba(0, 0, 0, 0.3); /* Dark mode header shadow */
+            --body-bg-light: #212529;
+            --body-text-light: #e2e6ea;
+            --card-bg-light: #343a40;
+            --card-shadow-light: rgba(0, 0, 0, 0.3);
+            --list-item-bg-light: #495057;
+            --list-item-shadow-light: rgba(0, 0, 0, 0.2);
+            --code-bg-light: #525c64;
+            --footer-bg-light: #1a1e21;
+            --footer-text-light: #adb5bd;
+            --footer-link-color-light: #90c2ff;
+            --footer-link-hover-color-light: #c0daff;
+            --footer-shadow-light: rgba(0, 0, 0, 0.3);
+            --section-title-color-light: #ffffff;
+            --text-secondary-light: #ced4da;
+            --text-primary-custom-light: #88d4d9;
+            --navbar-bg-light: #343a40;
+            --navbar-shadow-light: rgba(0, 0, 0, 0.5);
+            --header-bg-light: #343a40;
+            --header-shadow-light: rgba(0, 0, 0, 0.3);
         }
 
-        /* Base styles applied universally, using CSS variables for theme adaptation. */
+        /* Base styles applied universally, with fallback colors for older browsers */
         body {
+            background-color: #f8f9fa; /* Fallback */
+            color: #272341; /* Fallback */
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             background-color: var(--body-bg-light);
             color: var(--body-text-light);
-            padding-top: 56px; /* Offset for fixed navbar height */
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme changes */
+            padding-top: 56px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
         }
-        p, a {
-            font-size: 1.125rem; /* Base font size for paragraphs and links */
+        p {
+            font-size: 1.125rem;
         }
         .section-title {
-            margin-bottom: 3rem; /* Spacing below section titles */
-            font-size: 2.5rem; /* Larger font size for main titles */
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
             text-transform: uppercase;
-            color: var(--section-title-color-light); /* Color adapts with theme */
+            color: #272341; /* Fallback */
+            color: var(--section-title-color-light);
             text-align: center;
             transition: color 0.3s ease;
         }
-        @media (max-width: 600px) { /* Adjust font size for smaller screens */
+        @media (max-width: 600px) {
             .section-title {
                 font-size: 1.75rem;
             }
         }
-        /* Styles for the main header section, adapting its background and shadow to the theme. */
+        /* Styles for the main header section */
         #title {
+            background-color: #ffffff; /* Fallback */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Fallback */
             background-color: var(--header-bg-light);
             box-shadow: 0 0.5rem 1rem var(--header-shadow-light);
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .card {
-            padding: 2.5rem; /* Internal padding for cards */
-            margin-bottom: 2rem; /* Space below each card */
-            border-radius: 0.5rem; /* Rounded corners */
-            background-color: var(--card-bg-light); /* Background adapts with theme */
-            box-shadow: 0 0.5rem 1rem var(--card-shadow-light); /* Shadow adapts with theme */
-            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+            background-color: #ffffff; /* Fallback */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Fallback */
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            background-color: var(--card-bg-light);
+            box-shadow: 0 0.5rem 1rem var(--card-shadow-light);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .card h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
         .list-group-item {
+            color: #272341; /* Fallback */
             font-size: 1.125rem;
-            color: var(--body-text-light); /* Inherits body text color for consistency */
+            color: var(--body-text-light);
             transition: color 0.3s ease;
         }
         .list-group-item i {
-            font-size: 1.375rem; /* Larger icon size */
-            color: #36d1dc; /* Teal color for icons (consistent in both modes) */
+            font-size: 1.375rem;
+            color: #36d1dc;
             margin-right: 0.625rem;
         }
-        /* Styling for code-like text snippets, adapting background and ensuring text breaks correctly. */
+        /* Styling for code-like text snippets */
         .font-mono {
+            background-color: #d8e0e7; /* Fallback */
+            color: #272341; /* Fallback */
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            background-color: var(--code-bg-light); /* Background adapts with theme */
+            background-color: var(--code-bg-light);
             border-radius: 0.25rem;
             padding: 0.125rem 0.375rem;
             transition: background-color 0.3s ease;
-            white-space: nowrap; /* Prevents text from wrapping by default */
-            display: inline-block; /* Allows padding and background to apply correctly */
-            color: var(--body-text-light); /* Ensure font-mono text color adapts */
+            white-space: nowrap;
+            display: inline-block;
+            color: var(--body-text-light);
         }
-        /* Ensures long text or filenames break only if necessary, without breaking short words like "app.py". */
         .list-group-item span.font-mono {
-            white-space: normal; /* Allows wrapping within the span */
-            overflow-wrap: break-word; /* Breaks long words if they overflow */
-            word-break: keep-all; /* Prevents breaking within words unless forced by overflow-wrap */
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-break: keep-all;
         }
-        /* For extremely long single words/filenames, allows breaking anywhere */
-        @media (max-width: 575px) { /* Targets extra small screens */
+        @media (max-width: 575px) {
             .list-group-item span.font-mono {
-                word-break: break-word; /* Allows breaking within words if needed on very small screens */
+                word-break: break-word;
             }
         }
 
-
         /* Gradient Text Styles (Main Title and Subtitles) */
-        /* These styles use CSS clipping to apply a gradient as text fill for visual effect. */
         .main-title-gradient {
             background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
             -webkit-background-clip: text;
@@ -173,7 +186,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent; /* Fallback */
-            display: inline-block; /* Essential for gradient to apply correctly */
+            display: inline-block;
         }
         /* Fallback color for light mode if gradient text clipping is not supported. */
         body:not(.dark-mode-active) .subtitle-gradient {
@@ -182,43 +195,51 @@
 
         /* Custom secondary text color that adapts with the theme. */
         .text-secondary-custom {
-            color: var(--text-secondary-light) !important; /* Overrides Bootstrap's text-secondary */
+            color: #4B5563 !important; /* Fallback */
+            color: var(--text-secondary-light) !important;
             transition: color 0.3s ease;
         }
 
-        /* Contact/Footer Section Styles: Adapts background, text, and link colors to the theme. */
+        /* Contact/Footer Section Styles */
         .portfolio-contact-footer {
+            background-color: #e9ecef; /* Fallback */
+            color: #272341; /* Fallback */
+            box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.05); /* Fallback */
             background-color: var(--footer-bg-light);
             padding: 3rem 0;
             color: var(--footer-text-light);
             margin-top: 5rem;
             text-align: center;
-            box-shadow: 0 -0.125rem 0.25rem var(--footer-shadow-light); /* Adds a subtle shadow above the footer */
+            box-shadow: 0 -0.125rem 0.25rem var(--footer-shadow-light);
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
         .portfolio-contact-footer h2 {
-            color: var(--section-title-color-light); /* Consistent title color */
+            color: #272341; /* Fallback */
+            color: var(--section-title-color-light);
             margin-bottom: 2rem;
             transition: color 0.3s ease;
         }
         .portfolio-contact-footer p {
+            color: #272341; /* Fallback */
             font-size: 1.125rem;
             margin-bottom: 0.5rem;
             color: var(--footer-text-light);
             transition: color 0.3s ease;
         }
         .portfolio-contact-footer a {
+            color: #0056b3; /* Fallback */
             font-size: 1.125rem;
-            color: var(--footer-link-color-light); /* Link color adapts with theme  */
+            color: var(--footer-link-color-light);
             transition: all .2s ease-in-out;
             display: inline-block;
             margin: 0.3rem 0;
         }
         .portfolio-contact-footer a:hover {
-            color: var(--footer-link-hover-color-light); /* Link hover color adapts with theme  */
+            color: #003366; /* Fallback */
+            color: var(--footer-link-hover-color-light);
         }
 
-        /* GitHub Button Styling: Provides a consistent, animated button for GitHub links. */
+        /* GitHub Button Styling */
         .github-button {
             display: inline-flex;
             align-items: center;
@@ -230,104 +251,108 @@
             overflow: hidden;
             border-radius: 0.375rem;
             transition: all cubic-bezier(0.19, 1, 0.22, 1) .6s;
-            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%); /* Gradient background for the button */
-            color: #fff; /* White text on button */
-            box-shadow: 0 0.25rem 0.375rem var(--card-shadow-light), 0 0.0625rem 0.1875rem var(--card-shadow-light); /* Shadow adapts */
+            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+            color: #fff;
+            box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.15), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.15); /* Fallback */
+            box-shadow: 0 0.25rem 0.375rem var(--card-shadow-light), 0 0.0625rem 0.1875rem var(--card-shadow-light);
             margin-top: 1rem;
             text-decoration: none;
         }
         .github-button:hover {
-            transform: translateY(-2px); /* Slight lift on hover */
-            box-shadow: 0 0.375rem 0.625rem var(--card-shadow-light), 0 0.125rem 0.25rem var(--card-shadow-light); /* Larger shadow on hover */
-            color: #fff; /* Ensures text remains white on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15); /* Fallback */
+            box-shadow: 0 0.375rem 0.625rem var(--card-shadow-light), 0 0.125rem 0.25rem var(--card-shadow-light);
+            color: #fff;
         }
         .github-button .bi {
             font-size: 1.375rem;
             margin-left: 0.625rem;
         }
 
-        /* Custom list group items for improved visual consistency. */
+        /* Custom list group items */
         .custom-list-group .list-group-item {
             border: none;
-            background-color: var(--list-item-bg-light); /* Background adapts with theme */
-            box-shadow: 0 0.125rem 0.25rem var(--list-item-shadow-light); /* Shadow adapts with theme */
+            background-color: #f8f9fa; /* Fallback */
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Fallback */
+            background-color: var(--list-item-bg-light);
+            box-shadow: 0 0.125rem 0.25rem var(--list-item-shadow-light);
             margin-bottom: 0.75rem;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .custom-list-group .list-group-item:last-child {
-            margin-bottom: 0; /* Removes bottom margin for the last item in a group */
+            margin-bottom: 0;
         }
 
-        /* Navbar specific styles for theme adaptation and responsiveness. */
+        /* Navbar specific styles */
         .navbar {
-            background-color: var(--navbar-bg-light) !important; /* Navbar background adapts with theme */
-            box-shadow: 0 0.125rem 0.25rem var(--navbar-shadow-light) !important; /* Navbar shadow adapts with theme */
+            background-color: #ffffff !important; /* Fallback */
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important; /* Fallback */
+            background-color: var(--navbar-bg-light) !important;
+            box-shadow: 0 0.125rem 0.25rem var(--navbar-shadow-light) !important;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .navbar-nav .nav-link {
+            color: #272341 !important; /* Fallback */
             font-size: 1.125rem;
-            color: var(--body-text-light) !important; /* Ensures nav links adapt color */
+            color: var(--body-text-light) !important;
             transition: color 0.3s ease;
         }
         .navbar-nav .nav-link:hover {
-            color: #5b86e5 !important; /* Fixed hover color for navigation links */
-        }
-        /* Adjustments for navbar brand/toggler in dark mode if needed for visibility. */
-        body.dark-mode-active .navbar-brand,
-        body.dark-mode-active .navbar-toggler-icon {
-            /* filter: invert(1); Uncomment if icons/brand text are not visible in dark mode by default */
+            color: #5b86e5 !important;
         }
         body.dark-mode-active .navbar-toggler {
-            border-color: rgba(255, 255, 255, 0.1); /* Lighter border for toggler in dark mode */
+            border-color: rgba(255, 255, 255, 0.1);
         }
-        /* Specific style for offcanvas menu links if Bootstrap renders it that way on mobile */
         body.dark-mode-active .offcanvas-body .nav-link {
             color: #f8f9fa !important;
         }
-
-        /* Adjustments for navbar links on medium and smaller screens. */
-        @media (max-width: 991px) { /* Targets screens smaller than large desktop (md breakpoint and below) */
+        @media (max-width: 991px) {
             .navbar-nav .nav-link {
-                font-size: 1rem; /* Slightly smaller font for nav links on smaller screens */
-                padding: 0.5rem 0.75rem; /* Adjust padding to make links more compact */
+                font-size: 1rem;
+                padding: 0.5rem 0.75rem;
             }
         }
 
-        /* Styles for the floating Dark Mode Toggle Button, ensuring it's always visible and adapts to themes. */
+        /* Styles for the floating Dark Mode Toggle Button */
         #darkModeToggle {
-            position: fixed; /* Makes the button float */
-            bottom: 20px;    /* 20px from the bottom */
-            right: 20px;     /* 20px from the right */
-            z-index: 1050;   /* High z-index to ensure it's always on top */
-            padding: 0.8rem 1.2rem; /* Larger padding for a more prominent button */
-            font-size: 1rem;       /* Slightly larger font size */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Adds a subtle shadow */
-            background-color: var(--card-bg-light); /* Button background adapts to theme */
-            color: var(--body-text-light); /* Button text color adapts to theme */
-            border-color: var(--text-secondary-light); /* Button border color adapts to theme */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Fallback */
+            background-color: #ffffff; /* Fallback */
+            color: #272341; /* Fallback */
+            border-color: #4B5563; /* Fallback */
+            background-color: var(--card-bg-light);
+            color: var(--body-text-light);
+            border-color: var(--text-secondary-light);
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         #darkModeToggle:hover {
-            background-color: var(--list-item-bg-light); /* Slight background change on hover */
+            background-color: #f8f9fa; /* Fallback */
+            color: #272341; /* Fallback */
+            border-color: #272341; /* Fallback */
+            background-color: var(--list-item-bg-light);
             color: var(--body-text-light);
             border-color: var(--body-text-light);
         }
         #darkModeToggle .bi {
-            margin-right: 0.5rem; /* Space between icon and text */
+            margin-right: 0.5rem;
         }
-        /* Responsive adjustments for the floating button on small screens (e.g., mobile phones). */
         @media (max-width: 767px) {
             #darkModeToggle {
-                padding: 0.6rem 0.8rem; /* Smaller padding on small screens */
+                padding: 0.6rem 0.8rem;
                 font-size: 0.9rem;
                 bottom: 15px;
                 right: 15px;
             }
             #darkModeToggle .d-none.d-md-inline {
-                display: none !important; /* Hides text, showing only icon on small screens */
+                display: none !important;
             }
             #darkModeToggle .bi {
-                margin-right: 0; /* Removes margin if text is hidden */
+                margin-right: 0;
             }
         }
     </style>
@@ -681,27 +706,29 @@
         <i class="bi bi-moon-fill"></i> <span class="d-none d-md-inline">Dark Mode</span>
     </button>
 
+    <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=es6,fetch,CustomEvent,IntersectionObserver,Array.prototype.includes,Promise,Object.assign,Element.prototype.classList"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
-        // JavaScript for Dark Mode Toggle functionality.
+        // JavaScript for Dark Mode Toggle functionality
         document.addEventListener('DOMContentLoaded', () => {
             const darkModeToggle = document.getElementById('darkModeToggle');
             const body = document.body;
-            const html = document.documentElement; // Refers to the <html> tag for Bootstrap theme attribute
+            const html = document.documentElement;
 
-            // Check for saved theme preference in localStorage or system preference.
+            // Check for saved theme preference or system preference
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            // Apply the theme based on saved preference or system preference.
+            // Apply the theme based on preference
             if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 enableDarkMode();
             } else {
                 disableDarkMode();
             }
 
-            // Event listener for the dark mode toggle button.
+            // Event listener for the dark mode toggle button
             darkModeToggle.addEventListener('click', () => {
                 if (body.classList.contains('dark-mode-active')) {
                     disableDarkMode();
@@ -710,20 +737,20 @@
                 }
             });
 
-            // Function to enable dark mode: Adds custom class and sets Bootstrap theme attribute.
+            // Function to enable dark mode
             function enableDarkMode() {
                 body.classList.add('dark-mode-active');
                 html.setAttribute('data-bs-theme', 'dark');
-                darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> <span class="d-none d-md-inline">Light Mode</span>'; // Updates button text/icon
-                localStorage.setItem('theme', 'dark'); // Saves theme preference to local storage
+                darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> <span class="d-none d-md-inline">Light Mode</span>';
+                localStorage.setItem('theme', 'dark');
             }
 
-            // Function to disable dark mode (enable light mode): Removes custom class and sets Bootstrap theme attribute.
+            // Function to disable dark mode (enable light mode)
             function disableDarkMode() {
                 body.classList.remove('dark-mode-active');
                 html.setAttribute('data-bs-theme', 'light');
-                darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i> <span class="d-none d-md-inline">Dark Mode</span>'; // Updates button text/icon
-                localStorage.setItem('theme', 'light'); // Saves theme preference to local storage
+                darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i> <span class="d-none d-md-inline">Dark Mode</span>';
+                localStorage.setItem('theme', 'light');
             }
         });
     </script>
