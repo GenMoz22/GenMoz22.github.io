@@ -1,338 +1,305 @@
- /* CSS Variables for Light/Dark Mode Color Management with Fallbacks for Older Browsers */
-        :root {
-            /* Fallback values for browsers that don't support CSS variables */
-            background-color: #f8f9fa;
-            color: #272341;
+/* Variabili CSS per la gestione del tema (Light/Dark Mode) */
+:root {
+    --body-bg-light: #f8f9fa;
+    --body-text-light: #272341;
+    --card-bg-light: #ffffff;
+    --card-shadow-light: rgba(0, 0, 0, 0.15);
+    --list-item-bg-light: #f8f9fa;
+    --list-item-shadow-light: rgba(0, 0, 0, 0.075);
+    --code-bg-light: #d8e0e7;
+    --footer-bg-light: #e9ecef;
+    --footer-text-light: #272341;
+    --footer-link-color-light: #0056b3;
+    --footer-link-hover-color-light: #003366;
+    --footer-shadow-light: rgba(0, 0, 0, 0.05);
+    --section-title-color-light: #272341;
+    --text-secondary-light: #4B5563;
+    --text-primary-custom-light: #0056b3;
+    --navbar-bg-light: #ffffff;
+    --navbar-shadow-light: rgba(0, 0, 0, 0.1);
+    --header-bg-light: #ffffff;
+    --header-shadow-light: rgba(0, 0, 0, 0.15);
+}
 
-            --body-bg-light: #f8f9fa;
-            --body-text-light: #272341;
-            --card-bg-light: #ffffff;
-            --card-shadow-light: rgba(0, 0, 0, 0.15);
-            --list-item-bg-light: #f8f9fa;
-            --list-item-shadow-light: rgba(0, 0, 0, 0.075);
-            --code-bg-light: #d8e0e7;
-            --footer-bg-light: #e9ecef;
-            --footer-text-light: #272341;
-            --footer-link-color-light: #0056b3;
-            --footer-link-hover-color-light: #003366;
-            --footer-shadow-light: rgba(0, 0, 0, 0.05);
-            --section-title-color-light: #272341;
-            --text-secondary-light: #4B5563;
-            --text-primary-custom-light: #0056b3;
-            --navbar-bg-light: #ffffff;
-            --navbar-shadow-light: rgba(0, 0, 0, 0.1);
-            --header-bg-light: #ffffff;
-            --header-shadow-light: rgba(0, 0, 0, 0.15);
-        }
+/* Stili per la Dark Mode */
+.dark-mode-active {
+    --body-bg-light: #212529;
+    --body-text-light: #e2e6ea;
+    --card-bg-light: #343a40;
+    --card-shadow-light: rgba(0, 0, 0, 0.3);
+    --list-item-bg-light: #495057;
+    --list-item-shadow-light: rgba(0, 0, 0, 0.2);
+    --code-bg-light: #525c64;
+    --footer-bg-light: #1a1e21;
+    --footer-text-light: #adb5bd;
+    --footer-link-color-light: #90c2ff;
+    --footer-link-hover-color-light: #c0daff;
+    --footer-shadow-light: rgba(0, 0, 0, 0.3);
+    --section-title-color-light: #ffffff;
+    --text-secondary-light: #ced4da;
+    --text-primary-custom-light: #88d4d9;
+    --navbar-bg-light: #343a40;
+    --navbar-shadow-light: rgba(0, 0, 0, 0.5);
+    --header-bg-light: #343a40;
+    --header-shadow-light: rgba(0, 0, 0, 0.3);
+}
 
-        /* Dark Mode styles, redefining CSS variables when 'dark-mode-active' class is present */
-        .dark-mode-active {
-            --body-bg-light: #212529;
-            --body-text-light: #e2e6ea;
-            --card-bg-light: #343a40;
-            --card-shadow-light: rgba(0, 0, 0, 0.3);
-            --list-item-bg-light: #495057;
-            --list-item-shadow-light: rgba(0, 0, 0, 0.2);
-            --code-bg-light: #525c64;
-            --footer-bg-light: #1a1e21;
-            --footer-text-light: #adb5bd;
-            --footer-link-color-light: #90c2ff;
-            --footer-link-hover-color-light: #c0daff;
-            --footer-shadow-light: rgba(0, 0, 0, 0.3);
-            --section-title-color-light: #ffffff;
-            --text-secondary-light: #ced4da;
-            --text-primary-custom-light: #88d4d9;
-            --navbar-bg-light: #343a40;
-            --navbar-shadow-light: rgba(0, 0, 0, 0.5);
-            --header-bg-light: #343a40;
-            --header-shadow-light: rgba(0, 0, 0, 0.3);
-        }
+/* Stili di base */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    background-color: var(--body-bg-light);
+    color: var(--body-text-light);
+    padding-top: 56px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+p {
+    font-size: 1.125rem;
+}
+.section-title {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--section-title-color-light);
+    text-align: center;
+    transition: color 0.3s ease;
+}
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
 
-        /* Base styles applied universally, with fallback colors for older browsers */
-        body {
-            background-color: #f8f9fa; /* Fallback */
-            color: #272341; /* Fallback */
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            background-color: var(--body-bg-light);
-            color: var(--body-text-light);
-            padding-top: 56px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-        }
-        p {
-            font-size: 1.125rem;
-        }
-        .section-title {
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            color: #272341; /* Fallback */
-            color: var(--section-title-color-light);
-            text-align: center;
-            transition: color 0.3s ease;
-        }
-        @media (max-width: 600px) {
-            .section-title {
-                font-size: 1.75rem;
-            }
-        }
-        /* Styles for the main header section */
-        #title {
-            background-color: #ffffff; /* Fallback */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Fallback */
-            background-color: var(--header-bg-light);
-            box-shadow: 0 0.5rem 1rem var(--header-shadow-light);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card {
-            background-color: #ffffff; /* Fallback */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Fallback */
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            border-radius: 0.5rem;
-            background-color: var(--card-bg-light);
-            box-shadow: 0 0.5rem 1rem var(--card-shadow-light);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .list-group-item {
-            color: #272341; /* Fallback */
-            font-size: 1.125rem;
-            color: var(--body-text-light);
-            transition: color 0.3s ease;
-        }
-        .list-group-item i {
-            font-size: 1.375rem;
-            color: #36d1dc;
-            margin-right: 0.625rem;
-        }
-        /* Styling for code-like text snippets */
-        .font-mono {
-            background-color: #d8e0e7; /* Fallback */
-            color: #272341; /* Fallback */
-            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-            background-color: var(--code-bg-light);
-            border-radius: 0.25rem;
-            padding: 0.125rem 0.375rem;
-            transition: background-color 0.3s ease;
-            white-space: nowrap;
-            display: inline-block;
-            color: var(--body-text-light);
-        }
-        .list-group-item span.font-mono {
-            white-space: normal;
-            overflow-wrap: break-word;
-            word-break: keep-all;
-        }
-        @media (max-width: 575px) {
-            .list-group-item span.font-mono {
-                word-break: break-word;
-            }
-        }
+/* Sezione titolo */
+#title {
+    background-color: var(--header-bg-light);
+    box-shadow: 0 0.5rem 1rem var(--header-shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card {
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--card-bg-light);
+    box-shadow: 0 0.5rem 1rem var(--card-shadow-light);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.list-group-item {
+    font-size: 1.125rem;
+    color: var(--body-text-light);
+    transition: color 0.3s ease;
+}
+.list-group-item i {
+    font-size: 1.375rem;
+    color: #36d1dc;
+    margin-right: 0.625rem;
+}
 
-        /* Gradient Text Styles (Main Title and Subtitles) */
-        .main-title-gradient {
-            background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent; /* Fallback for browsers not supporting text clipping */
-        }
-        /* Fallback color for light mode if gradient text clipping is not supported. */
-        body:not(.dark-mode-active) .main-title-gradient {
-             color: #5b86e5;
-        }
-        /* Adjusts gradient for better visibility in dark mode. */
-        body.dark-mode-active .main-title-gradient {
-            background-image: linear-gradient(135deg, #88d4d9 0%, #8daedc 100%);
-        }
-        /* Overrides gradient on small screens for better legibility. */
-        @media (max-width: 600px) {
-            .main-title-gradient {
-                background-image: none;
-                -webkit-text-fill-color: #5b86e5;
-                color: #5b86e5;
-            }
-        }
+/* Stili per il testo codice (font-mono) */
+.font-mono {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    background-color: var(--code-bg-light);
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.375rem;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
+    color: var(--body-text-light);
+}
+.list-group-item span.font-mono {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+}
+@media (max-width: 575px) {
+    .list-group-item span.font-mono {
+        word-break: break-word;
+    }
+}
 
-        .subtitle-gradient {
-            background-image: linear-gradient(135deg, #FFC300 0%, #FF5733 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent; /* Fallback */
-            display: inline-block;
-        }
-        /* Fallback color for light mode if gradient text clipping is not supported. */
-        body:not(.dark-mode-active) .subtitle-gradient {
-            color: #FF5733;
-        }
+/* Stili per testo con gradiente (titoli) */
+.main-title-gradient {
+    background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback per browser che non supportano text clipping */
+}
+/* Fallback Light Mode */
+body:not(.dark-mode-active) .main-title-gradient {
+     color: #5b86e5;
+}
+/* Gradiente Dark Mode */
+body.dark-mode-active .main-title-gradient {
+    background-image: linear-gradient(135deg, #88d4d9 0%, #8daedc 100%);
+}
+/* No gradiente su schermi piccoli */
+@media (max-width: 600px) {
+    .main-title-gradient {
+        background-image: none;
+        -webkit-text-fill-color: #5b86e5;
+        color: #5b86e5;
+    }
+}
 
-        /* Custom secondary text color that adapts with the theme. */
-        .text-secondary-custom {
-            color: #4B5563 !important; /* Fallback */
-            color: var(--text-secondary-light) !important;
-            transition: color 0.3s ease;
-        }
+.subtitle-gradient {
+    background-image: linear-gradient(135deg, #FFC300 0%, #FF5733 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+    display: inline-block;
+}
+/* Fallback Light Mode */
+body:not(.dark-mode-active) .subtitle-gradient {
+    color: #FF5733;
+}
 
-        /* Contact/Footer Section Styles */
-        .portfolio-contact-footer {
-            background-color: #e9ecef; /* Fallback */
-            color: #272341; /* Fallback */
-            box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.05); /* Fallback */
-            background-color: var(--footer-bg-light);
-            padding: 3rem 0;
-            color: var(--footer-text-light);
-            margin-top: 5rem;
-            text-align: center;
-            box-shadow: 0 -0.125rem 0.25rem var(--footer-shadow-light);
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .portfolio-contact-footer h2 {
-            color: #272341; /* Fallback */
-            color: var(--section-title-color-light);
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
-        }
-        .portfolio-contact-footer p {
-            color: #272341; /* Fallback */
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            color: var(--footer-text-light);
-            transition: color 0.3s ease;
-        }
-        .portfolio-contact-footer a {
-            color: #0056b3; /* Fallback */
-            font-size: 1.125rem;
-            color: var(--footer-link-color-light);
-            transition: all .2s ease-in-out;
-            display: inline-block;
-            margin: 0.3rem 0;
-        }
-        .portfolio-contact-footer a:hover {
-            color: #003366; /* Fallback */
-            color: var(--footer-link-hover-color-light);
-        }
+/* Colore secondario personalizzato */
+.text-secondary-custom {
+    color: var(--text-secondary-light) !important;
+    transition: color 0.3s ease;
+}
 
-        /* GitHub Button Styling */
-        .github-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
-            line-height: 1;
-            z-index: 10;
-            overflow: hidden;
-            border-radius: 0.375rem;
-            transition: all cubic-bezier(0.19, 1, 0.22, 1) .6s;
-            background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
-            color: #fff;
-            box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.15), 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.15); /* Fallback */
-            box-shadow: 0 0.25rem 0.375rem var(--card-shadow-light), 0 0.0625rem 0.1875rem var(--card-shadow-light);
-            margin-top: 1rem;
-            text-decoration: none;
-        }
-        .github-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15); /* Fallback */
-            box-shadow: 0 0.375rem 0.625rem var(--card-shadow-light), 0 0.125rem 0.25rem var(--card-shadow-light);
-            color: #fff;
-        }
-        .github-button .bi {
-            font-size: 1.375rem;
-            margin-left: 0.625rem;
-        }
+/* Footer e Contatti */
+.portfolio-contact-footer {
+    background-color: var(--footer-bg-light);
+    padding: 3rem 0;
+    color: var(--footer-text-light);
+    margin-top: 5rem;
+    text-align: center;
+    box-shadow: 0 -0.125rem 0.25rem var(--footer-shadow-light);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.portfolio-contact-footer h2 {
+    color: var(--section-title-color-light);
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+}
+.portfolio-contact-footer p {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: var(--footer-text-light);
+    transition: color 0.3s ease;
+}
+.portfolio-contact-footer a {
+    font-size: 1.125rem;
+    color: var(--footer-link-color-light);
+    transition: all .2s ease-in-out;
+    display: inline-block;
+    margin: 0.3rem 0;
+}
+.portfolio-contact-footer a:hover {
+    color: var(--footer-link-hover-color-light);
+}
 
-        /* Custom list group items */
-        .custom-list-group .list-group-item {
-            border: none;
-            background-color: #f8f9fa; /* Fallback */
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Fallback */
-            background-color: var(--list-item-bg-light);
-            box-shadow: 0 0.125rem 0.25rem var(--list-item-shadow-light);
-            margin-bottom: 0.75rem;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .custom-list-group .list-group-item:last-child {
-            margin-bottom: 0;
-        }
+/* Stili pulsante GitHub */
+.github-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 0.375rem;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) .6s;
+    background-image: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
+    color: #fff;
+    box-shadow: 0 0.25rem 0.375rem var(--card-shadow-light), 0 0.0625rem 0.1875rem var(--card-shadow-light);
+    margin-top: 1rem;
+    text-decoration: none;
+}
+.github-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.375rem 0.625rem var(--card-shadow-light), 0 0.125rem 0.25rem var(--card-shadow-light);
+    color: #fff;
+}
+.github-button .bi {
+    font-size: 1.375rem;
+    margin-left: 0.625rem;
+}
 
-        /* Navbar specific styles */
-        .navbar {
-            background-color: #ffffff !important; /* Fallback */
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1) !important; /* Fallback */
-            background-color: var(--navbar-bg-light) !important;
-            box-shadow: 0 0.125rem 0.25rem var(--navbar-shadow-light) !important;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .navbar-nav .nav-link {
-            color: #272341 !important; /* Fallback */
-            font-size: 1.125rem;
-            color: var(--body-text-light) !important;
-            transition: color 0.3s ease;
-        }
-        .navbar-nav .nav-link:hover {
-            color: #5b86e5 !important;
-        }
-        body.dark-mode-active .navbar-toggler {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-        body.dark-mode-active .offcanvas-body .nav-link {
-            color: #f8f9fa !important;
-        }
-        @media (max-width: 991px) {
-            .navbar-nav .nav-link {
-                font-size: 1rem;
-                padding: 0.5rem 0.75rem;
-            }
-        }
+/* Stili per lista elementi personalizzata */
+.custom-list-group .list-group-item {
+    border: none;
+    background-color: var(--list-item-bg-light);
+    box-shadow: 0 0.125rem 0.25rem var(--list-item-shadow-light);
+    margin-bottom: 0.75rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.custom-list-group .list-group-item:last-child {
+    margin-bottom: 0;
+}
 
-        /* Styles for the floating Dark Mode Toggle Button */
-        #darkModeToggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1050;
-            padding: 0.8rem 1.2rem;
-            font-size: 1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Fallback */
-            background-color: #ffffff; /* Fallback */
-            color: #272341; /* Fallback */
-            border-color: #4B5563; /* Fallback */
-            background-color: var(--card-bg-light);
-            color: var(--body-text-light);
-            border-color: var(--text-secondary-light);
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        #darkModeToggle:hover {
-            background-color: #f8f9fa; /* Fallback */
-            color: #272341; /* Fallback */
-            border-color: #272341; /* Fallback */
-            background-color: var(--list-item-bg-light);
-            color: var(--body-text-light);
-            border-color: var(--body-text-light);
-        }
-        #darkModeToggle .bi {
-            margin-right: 0.5rem;
-        }
-        @media (max-width: 767px) {
-            #darkModeToggle {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.9rem;
-                bottom: 15px;
-                right: 15px;
-            }
-            #darkModeToggle .d-none.d-md-inline {
-                display: none !important;
-            }
-            #darkModeToggle .bi {
-                margin-right: 0;
-            }
-        }
+/* Stili specifici della Navbar */
+.navbar {
+    background-color: var(--navbar-bg-light) !important;
+    box-shadow: 0 0.125rem 0.25rem var(--navbar-shadow-light) !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar-nav .nav-link {
+    font-size: 1.125rem;
+    color: var(--body-text-light) !important;
+    transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover {
+    color: #5b86e5 !important;
+}
+body.dark-mode-active .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode-active .offcanvas-body .nav-link {
+    color: #f8f9fa !important;
+}
+@media (max-width: 991px) {
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Stili per il pulsante Dark Mode fluttuante */
+#darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background-color: var(--card-bg-light);
+    color: var(--body-text-light);
+    border-color: var(--text-secondary-light);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#darkModeToggle:hover {
+    background-color: var(--list-item-bg-light);
+    color: var(--body-text-light);
+    border-color: var(--body-text-light);
+}
+#darkModeToggle .bi {
+    margin-right: 0.5rem;
+}
+@media (max-width: 767px) {
+    #darkModeToggle {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+        bottom: 15px;
+        right: 15px;
+    }
+    #darkModeToggle .d-none.d-md-inline {
+        display: none !important;
+    }
+    #darkModeToggle .bi {
+        margin-right: 0;
+    }
+}
