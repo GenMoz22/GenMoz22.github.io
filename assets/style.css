@@ -1,154 +1,218 @@
-/* VARIABILI E TEMA */
+/* ==========================================================================
+   VARIABILI E TEMA
+   ========================================================================== */
 :root {
-    --body-bg-light: #f8f9fa;
-    --body-text-light: #272341;
-    --card-bg-light: #ffffff;
-    --card-shadow-light: rgba(0, 0, 0, 0.1);
+    /* Light Theme */
+    --body-bg: #f8f9fa;
+    --body-text: #272341;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
     --nav-bg: rgba(255, 255, 255, 0.9);
-    --nav-text: #272341;
     --nav-border: rgba(0, 0, 0, 0.05);
     --footer-bg: #f1f3f5;
-    --footer-text: #272341;
-    --footer-link: #0056b3;
+    --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    --accent-gradient: linear-gradient(135deg, #FFC300 0%, #FF5733 100%);
+    --link-color: #0056b3;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark-mode-active {
-    --body-bg-light: #121212;
-    --body-text-light: #e2e6ea;
-    --card-bg-light: #1e1e1e;
-    --card-shadow-light: rgba(0, 0, 0, 0.4);
+    /* Dark Theme */
+    --body-bg: #121212;
+    --body-text: #e2e6ea;
+    --card-bg: #1e1e1e;
+    --card-shadow: rgba(0, 0, 0, 0.4);
     --nav-bg: rgba(30, 30, 30, 0.85);
-    --nav-text: #f8f9fa;
     --nav-border: rgba(255, 255, 255, 0.1);
     --footer-bg: #1a1a1a;
-    --footer-text: #adb5bd;
-    --footer-link: #88d4d9;
+    --link-color: #88d1ff;
 }
 
-/* STILI GENERALI */
+/* ==========================================================================
+    REGOLE GENERALI
+   ========================================================================== */
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--body-bg-light);
-    color: var(--body-text-light);
-    padding-top: 70px;
-    transition: all 0.3s ease;
+    background-color: var(--body-bg);
+    color: var(--body-text);
+    transition: var(--transition-smooth);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+    NAVIGAZIONE
+   ========================================================================== */
+.navbar {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nav-border);
+    padding: 1rem 0;
+}
+
+.nav-link {
+    color: var(--body-text) !important;
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+    CARD & SEZIONI
+   ========================================================================== */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    transition: var(--transition-smooth);
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px var(--card-shadow);
 }
 
 .section-title {
-    margin-bottom: 2.5rem;
-    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
     text-align: center;
-    text-transform: uppercase;
+    position: relative;
 }
 
-/* NAVBAR */
-.navbar {
-    background-color: var(--nav-bg) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--nav-border);
-    transition: all 0.3s ease;
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: var(--primary-gradient);
+    margin: 10px auto;
+    border-radius: 2px;
 }
 
-.navbar-nav .nav-link {
-    color: var(--nav-text) !important;
-    font-weight: 500;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #36d1dc !important;
-}
-
-/* CARDS */
-.card {
-    padding: 1.5rem;
-    border: none;
-    background-color: var(--card-bg-light);
-    box-shadow: 0 4px 12px var(--card-shadow-light);
-    transition: transform 0.3s ease;
-}
-
-.card:hover { transform: translateY(-5px); }
-
-.custom-list-group .list-group-item {
-    border: none;
-    background: transparent;
-    padding: 0.5rem 0;
-    color: inherit;
-}
-
-.list-group-item i { color: #36d1dc; margin-right: 10px; }
-
-/* GRADIENTI */
+/* Tipografia Gradient */
 .main-title-gradient {
-    background: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    color: #5b86e5;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 800;
 }
 
 .subtitle-gradient {
-    background: linear-gradient(135deg, #FFC300 0%, #FF5733 100%);
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    color: #FF5733;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-/* FOOTER */
-.portfolio-contact-footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
-    padding: 4rem 0;
-    margin-top: 5rem;
-    border-top: 1px solid var(--nav-border);
-}
-
+/* ==========================================================================
+    LINK E BOTTONI
+   ========================================================================== */
 .contact-item {
-    padding: 0.6rem 1.4rem;
-    border-radius: 50px;
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--footer-link) !important;
-    text-decoration: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--nav-border);
+    color: var(--body-text) !important;
     font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.dark-mode-active .contact-item {
-    background: rgba(255, 255, 255, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px var(--card-shadow);
 }
 
 .contact-item:hover {
-    background: var(--footer-link);
+    background: var(--primary-gradient);
     color: white !important;
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 15px var(--card-shadow);
 }
 
-/* UTILITY */
-.font-mono {
-    font-family: monospace;
-    background: rgba(128, 128, 128, 0.1);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-right: 5px;
+.contact-item i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover i {
+    transform: rotate(10deg);
 }
 
 .github-button {
-    background: linear-gradient(135deg, #5b86e5 0%, #36d1dc 100%);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: #24292e;
+    color: white !important;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
 }
 
+.github-button:hover {
+    background: #444;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+ DARK MODE TOGGLE
+   ========================================================================== */
 #darkModeToggle {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1050;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    padding: 12px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: var(--transition-smooth);
+}
+
+#darkModeToggle:hover {
+    transform: scale(1.1);
+}
+
+.font-mono {
+    font-family: 'Courier New', monospace;
+    background: rgba(0,0,0,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.dark-mode-active .font-mono {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Footer */
+.portfolio-contact-footer {
+    background-color: var(--footer-bg);
+    padding: 5rem 0;
+    margin-top: 5rem;
+    border-top: 1px solid var(--nav-border);
 }
