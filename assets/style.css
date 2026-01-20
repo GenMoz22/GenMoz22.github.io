@@ -14,8 +14,8 @@
 .dark-mode-active {
     --body-bg: #121212;
     --body-text: #e0e0e0;
-    --card-bg: #1e1e1e; 
-    --hero-bg: #2a2a2a; 
+    --card-bg: #1e1e1e;
+    --hero-bg: #2a2a2a;
     --nav-bg: #1e1e1e;
     --nav-border: rgba(255, 255, 255, 0.1);
 }
@@ -23,7 +23,12 @@
 /* ==========================================================================
    2. TRANSIZIONI E GLOBAL
    ========================================================================== */
-body, .navbar, .card, .hero-section, .list-group-item, #home {
+body,
+.navbar,
+.card,
+.hero-section,
+.list-group-item,
+#home {
     transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed) !important;
 }
 
@@ -40,12 +45,15 @@ a {
 /* ==========================================================================
    3. NAVBAR E HERO
    ========================================================================== */
-.navbar.bg-light, .navbar {
+.navbar.bg-light,
+.navbar {
     background-color: var(--nav-bg) !important;
     border-bottom: 1px solid var(--nav-border);
 }
 
-#title, .hero-section, #home {
+#title,
+.hero-section,
+#home {
     background-color: var(--hero-bg) !important;
     color: var(--body-text) !important;
     border-radius: 20px;
@@ -76,8 +84,8 @@ a {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: 12px 28px; 
-    min-width: 200px; 
+    padding: 12px 28px;
+    min-width: 200px;
     border-radius: 12px;
     font-weight: 600;
     text-decoration: none !important;
@@ -105,25 +113,29 @@ a {
     transform: scale(1.02);
 }
 
-.btn-linkedin, [href*="linkedin.com"].contact-item {
+.btn-linkedin,
+[href*="linkedin.com"].contact-item {
     background-color: #0077b5 !important;
     color: #ffffff !important;
 }
 
-.btn-github, [href*="github.com"].contact-item {
+.btn-github,
+[href*="github.com"].contact-item {
     background-color: #24292e !important;
     color: #ffffff !important;
 }
 
-.btn-credly, [href*="credly.com"].contact-item {
+.btn-credly,
+[href*="credly.com"].contact-item {
     background-color: #ff6b00 !important;
     color: #ffffff !important;
 }
 
-.btn-credly:hover, [href*="credly.com"].contact-item:hover {
+.btn-credly:hover,
+[href*="credly.com"].contact-item:hover {
     background-color: #e65a00 !important;
     color: #ffffff !important;
-    filter: none !important; 
+    filter: none !important;
 }
 
 /* ==========================================================================
