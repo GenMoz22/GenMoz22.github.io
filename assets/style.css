@@ -303,3 +303,53 @@ body.dark-mode-active .offcanvas-body .nav-link {
         margin-right: 0;
     }
 }
+/* --- Stili per Card e Allineamento --- */
+.card {
+    height: 100%;
+    border: none;
+    background-color: var(--card-bg-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Gestione dei link lunghi nelle card */
+.list-group-item a {
+    word-break: break-all;
+    text-decoration: none;
+    color: var(--text-primary-custom-light);
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.custom-list-group .list-group-item {
+    background-color: transparent;
+    border: none;
+    padding-left: 0;
+}
+
+/* Posizionamento pulsante Dark Mode */
+#darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Stili specifici per il footer contatti */
+#contact a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+}
+
+#contact a:hover {
+    color: var(--text-primary-custom-light);
+    text-decoration: underline;
+}
