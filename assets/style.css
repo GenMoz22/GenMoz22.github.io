@@ -6,7 +6,8 @@
     --body-text: #2d3436;
     --card-bg: #ffffff;
     --hero-bg: #f1f3f5;
-    --nav-bg: rgba(255, 255, 255, 0.95);
+    --nav-bg: #ffffff;
+    --nav-text: #2d3436;
     --nav-border: rgba(0, 0, 0, 0.1);
     --transition-speed: 0.3s ease;
 }
@@ -15,18 +16,19 @@
     --body-bg: #121212;
     --body-text: #e0e0e0;
     --card-bg: #1e1e1e;
-    --hero-bg: #2a2a2a; /
-    --nav-bg: rgba(18, 18, 18, 0.95);
+    --hero-bg: #252525;
+    --nav-bg: #1e1e1e;
+    --nav-text: #e0e0e0;
     --nav-border: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
-   2.TRANSIZIONI
+   2. TRANSIZIONI
    ========================================================================== */
-body, .card, .navbar, .hero-section, .list-group-item, .contact-item {
-    transition: background-color var(--transition-speed), 
-                color var(--transition-speed), 
-                border-color var(--transition-speed);
+body, .navbar, .card, .hero-section, .list-group-item, .jumbotron, section, div {
+    transition: background-color var(--transition-speed) ease, 
+                color var(--transition-speed) ease, 
+                border-color var(--transition-speed) ease !important;
 }
 
 body {
@@ -36,31 +38,36 @@ body {
 }
 
 /* ==========================================================================
-   3. NAVBAR & HERO
+   3. NAVBAR
    ========================================================================== */
-.navbar {
+.navbar.bg-light, .navbar {
     background-color: var(--nav-bg) !important;
     border-bottom: 1px solid var(--nav-border);
 }
 
-.hero-section, .jumbotron, .bg-light[id="home"] {
-    background-color: var(--hero-bg) !important;
-    color: var(--body-text) !important;
-    padding: 4rem 2rem;
-    border-radius: 20px;
-    margin-bottom: 2rem;
-    display: block !important;
+.navbar-brand, .nav-link {
+    color: var(--nav-text) !important;
 }
 
 /* ==========================================================================
-   4. CARD
+   4. HERO
+   ========================================================================== */
+.hero-section, .jumbotron, #home, .bg-light.py-5 {
+    background-color: var(--hero-bg) !important;
+    color: var(--body-text) !important;
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   5. CARD 
    ========================================================================== */
 .card {
     background-color: var(--card-bg) !important;
     border: 1px solid var(--nav-border) !important;
-    padding: 2rem !important; 
+    padding: 2.5rem !important; 
     margin-bottom: 1.5rem;
-    overflow: hidden;
 }
 
 .list-group-item {
@@ -70,32 +77,33 @@ body {
 }
 
 /* ==========================================================================
-   5. BOTTONI
+   6. BOTTONI
    ========================================================================== */
-.contact-item {
+.contact-item, .btn-custom-link {
     display: inline-flex !important;
     align-items: center;
     gap: 10px;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 12px 24px;
+    border-radius: 12px;
     font-weight: 600;
     text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     margin: 5px;
-    transition: transform 0.2s;
 }
 
 .contact-item:hover {
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     color: #ffffff !important;
 }
 
-.btn-github {
+.btn-github, [href*="github.com"] {
     background-color: #24292e !important;
     color: #ffffff !important;
-    border: 1px solid #444;
+    border: 1px solid #444 !important;
 }
 
-.btn-linkedin {
+.btn-linkedin, [href*="linkedin.com"] {
     background-color: #0077b5 !important;
     color: #ffffff !important;
 }
@@ -110,10 +118,11 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
+    display: inline-block;
 }
 
 /* ==========================================================================
-   6. DARK MODE TOGGLE
+   7. DARK MODE TOGGLE
    ========================================================================== */
 #darkModeToggle {
     position: fixed;
@@ -123,6 +132,7 @@ body {
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
