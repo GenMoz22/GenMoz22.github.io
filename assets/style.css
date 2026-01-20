@@ -6,6 +6,7 @@
     --body-bg: #f8f9fa;
     --body-text: #2d3436;
     --card-bg: #ffffff;
+    --hero-bg: #e9ecef;
     --card-shadow: rgba(0, 0, 0, 0.05);
     --nav-bg: rgba(255, 255, 255, 0.9);
     --nav-border: rgba(0, 0, 0, 0.05);
@@ -14,7 +15,8 @@
     --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     --accent-gradient: linear-gradient(135deg, #FFC300 0%, #FF5733 100%);
     --link-color: #0056b3;
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --transition-speed: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark-mode-active {
@@ -22,6 +24,7 @@
     --body-bg: #121212;
     --body-text: #e0e0e0;
     --card-bg: #1e1e1e;           
+    --hero-bg: #252525;           
     --card-shadow: rgba(0, 0, 0, 0.4);
     --nav-bg: rgba(30, 30, 30, 0.85);
     --nav-border: rgba(255, 255, 255, 0.08);
@@ -31,112 +34,93 @@
     --bs-list-group-bg: var(--card-bg);
     --bs-list-group-border-color: var(--nav-border);
     --bs-list-group-color: var(--body-text);
-    --bs-list-group-action-hover-bg: rgba(255, 255, 255, 0.05);
 }
 
 /* ==========================================================================
-   2. REGOLE GENERALI
+   2. REGOLE GLOBALI
    ========================================================================== */
+* {
+    transition: background-color var(--transition-speed), 
+                color var(--transition-speed), 
+                border-color var(--transition-speed), 
+                box-shadow var(--transition-speed) !important;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--body-bg);
     color: var(--body-text);
-    transition: var(--transition-smooth);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.01em;
-}
-
-h1, h2, h3, .section-title {
-    color: var(--body-text);
-    letter-spacing: -0.02em;
 }
 
 /* ==========================================================================
-   3. CARD E COMPONENTI LISTA
+   3. HERO SECTION 
+   ========================================================================== */
+.hero-section, .jumbotron, .bg-light { 
+    background-color: var(--hero-bg) !important;
+    color: var(--body-text);
+    border-radius: 15px;
+}
+
+/* ==========================================================================
+   4. CARD E LISTE
    ========================================================================== */
 .card {
     background-color: var(--card-bg);
     border: 1px solid var(--nav-border);
-    border-radius: 15px;
-    padding: 2rem;
     box-shadow: 0 4px 6px var(--card-shadow);
-    transition: var(--transition-smooth);
-    margin-bottom: 20px;
-    overflow: hidden; 
-}
-
-.card.h-100 {
-    display: flex;
-    flex-direction: column;
 }
 
 .list-group-item {
     background-color: var(--card-bg) !important;
     color: var(--body-text) !important;
     border-color: var(--nav-border) !important;
-    padding: 0.75rem 1.25rem;
-}
-
-.list-group-flush > .list-group-item {
-    border-left: 0;
-    border-right: 0;
 }
 
 /* ==========================================================================
-   4. NAVIGAZIONE E BOTTONI
+   5. GITHUB BUTTON & CONTACT
    ========================================================================== */
-.navbar {
-    background-color: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--nav-border);
-}
-
-.nav-link {
-    color: var(--body-text) !important;
-    font-weight: 500;
-}
-
-.contact-item {
-    padding: 0.8rem 1.6rem;
-    border-radius: 12px;
-    background: var(--card-bg);
-    border: 1px solid var(--nav-border);
-    color: var(--body-text) !important;
-    font-weight: 600;
+.github-button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    transition: var(--transition-smooth);
+    padding: 12px 25px;
+    background-color: #24292e !important; 
+    color: #ffffff !important;           
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    z-index: 10;
 }
 
-.contact-item:hover {
-    background: var(--primary-gradient);
-    color: white !important;
-    transform: translateY(-5px);
+.github-button:hover {
+    background-color: #444 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.contact-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--nav-border);
+    color: var(--body-text) !important;
 }
 
 /* ==========================================================================
-   5. UTILITY E DARK MODE TOGGLE
+   6. UTILITY
    ========================================================================== */
 #darkModeToggle {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    padding: 12px 20px;
-    border-radius: 50px;
     background: var(--card-bg);
     color: var(--body-text);
     border: 1px solid var(--nav-border);
-    box-shadow: 0 4px 15px var(--card-shadow);
-    transition: var(--transition-smooth);
 }
 
 .main-title-gradient {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
+    -webkit-text-fill-color: transparent;
 }
