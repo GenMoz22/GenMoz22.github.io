@@ -134,8 +134,24 @@ a {
 .btn-credly:hover,
 [href*="credly.com"].contact-item:hover {
     background-color: #e65a00 !important;
+    transform: scale(1.02);
     color: #ffffff !important;
     filter: none !important;
+}
+
+.btn-linkedin:hover,
+[href*="linkedin.com"].contact-item:hover {
+    background-color: #068cd4 !important;
+    transform: scale(1.02);
+    color: #ffffff !important;
+}
+
+.btn-github:hover,
+[href*="github.com"].contact-item:hover,
+.github-button:hover {
+    background-color: #444 !important;
+    transform: scale(1.02);
+    color: #ffffff !important;
 }
 
 /* ==========================================================================
