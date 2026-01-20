@@ -2,8 +2,9 @@
    1. VARIABILI E TEMA
    ========================================================================== */
 :root {
+    /* Light Theme */
     --body-bg: #f8f9fa;
-    --body-text: #2d3436;         
+    --body-text: #2d3436;
     --card-bg: #ffffff;
     --card-shadow: rgba(0, 0, 0, 0.05);
     --nav-bg: rgba(255, 255, 255, 0.9);
@@ -17,14 +18,20 @@
 }
 
 .dark-mode-active {
+    /* Dark Theme */
     --body-bg: #121212;
-    --body-text: #e0e0e0;         
+    --body-text: #e0e0e0;
     --card-bg: #1e1e1e;           
     --card-shadow: rgba(0, 0, 0, 0.4);
     --nav-bg: rgba(30, 30, 30, 0.85);
     --nav-border: rgba(255, 255, 255, 0.08);
     --footer-bg: #1a1a1a;
     --link-color: #88d1ff;
+
+    --bs-list-group-bg: var(--card-bg);
+    --bs-list-group-border-color: var(--nav-border);
+    --bs-list-group-color: var(--body-text);
+    --bs-list-group-action-hover-bg: rgba(255, 255, 255, 0.05);
 }
 
 /* ==========================================================================
@@ -40,51 +47,13 @@ body {
     letter-spacing: -0.01em;
 }
 
-a {
-    text-decoration: none;
-    color: var(--link-color);
-    transition: var(--transition-smooth);
-}
-
 h1, h2, h3, .section-title {
     color: var(--body-text);
     letter-spacing: -0.02em;
 }
 
 /* ==========================================================================
-   3. NAVIGAZIONE
-   ========================================================================== */
-.navbar {
-    background-color: var(--nav-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--nav-border);
-    padding: 1rem 0;
-}
-
-.nav-link {
-    color: var(--body-text) !important;
-    font-weight: 500;
-    margin: 0 10px;
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background: var(--primary-gradient);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* ==========================================================================
-   4. CARD E SEZIONI
+   3. CARD E COMPONENTI LISTA
    ========================================================================== */
 .card {
     background-color: var(--card-bg);
@@ -94,90 +63,61 @@ h1, h2, h3, .section-title {
     box-shadow: 0 4px 6px var(--card-shadow);
     transition: var(--transition-smooth);
     margin-bottom: 20px;
+    overflow: hidden; 
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px var(--card-shadow);
+.card.h-100 {
+    display: flex;
+    flex-direction: column;
 }
 
-.section-title {
-    font-weight: 700;
-    margin-bottom: 3rem;
-    text-align: center;
-    position: relative;
+.list-group-item {
+    background-color: var(--card-bg) !important;
+    color: var(--body-text) !important;
+    border-color: var(--nav-border) !important;
+    padding: 0.75rem 1.25rem;
 }
 
-.section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: var(--primary-gradient);
-    margin: 10px auto;
-    border-radius: 2px;
-}
-
-.main-title-gradient {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-}
-
-.subtitle-gradient {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 1.25rem;
-    font-weight: 700;
+.list-group-flush > .list-group-item {
+    border-left: 0;
+    border-right: 0;
 }
 
 /* ==========================================================================
-   5. COMPONENTI INTERATTIVI
+   4. NAVIGAZIONE E BOTTONI
    ========================================================================== */
+.navbar {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nav-border);
+}
+
+.nav-link {
+    color: var(--body-text) !important;
+    font-weight: 500;
+}
+
 .contact-item {
     padding: 0.8rem 1.6rem;
     border-radius: 12px;
-    background: var(--card-bg); /* Uniforme con la card */
+    background: var(--card-bg);
     border: 1px solid var(--nav-border);
     color: var(--body-text) !important;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 2px 4px var(--card-shadow);
+    transition: var(--transition-smooth);
 }
 
 .contact-item:hover {
     background: var(--primary-gradient);
     color: white !important;
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 15px var(--card-shadow);
-}
-
-.github-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 25px;
-    background: #24292e;
-    color: white !important;
-    border-radius: 10px;
-    font-weight: 700;
-    border: none;
-}
-
-.github-button:hover {
-    background: #444;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
 }
 
 /* ==========================================================================
-   6. UTILITY E MISC
+   5. UTILITY E DARK MODE TOGGLE
    ========================================================================== */
 #darkModeToggle {
     position: fixed;
@@ -186,24 +126,17 @@ h1, h2, h3, .section-title {
     z-index: 1000;
     padding: 12px 20px;
     border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background: var(--card-bg);
+    color: var(--body-text);
+    border: 1px solid var(--nav-border);
+    box-shadow: 0 4px 15px var(--card-shadow);
     transition: var(--transition-smooth);
 }
 
-.font-mono {
-    font-family: 'Courier New', monospace;
-    background: rgba(0,0,0,0.05);
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-.dark-mode-active .font-mono {
-    background: rgba(255,255,255,0.1);
-}
-
-.portfolio-contact-footer {
-    background-color: var(--footer-bg);
-    padding: 5rem 0;
-    margin-top: 5rem;
-    border-top: 1px solid var(--nav-border);
+.main-title-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
 }
