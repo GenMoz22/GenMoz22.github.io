@@ -14,14 +14,14 @@
 .dark-mode-active {
     --body-bg: #121212;
     --body-text: #e0e0e0;
-    --card-bg: #1e1e1e;
+    --card-bg: #1e1e1e; 
     --hero-bg: #2a2a2a; 
     --nav-bg: #1e1e1e;
     --nav-border: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
-   2. TRANSIZIONI
+   2. TRANSIZIONI E GLOBAL
    ========================================================================== */
 body, .navbar, .card, .hero-section, .list-group-item, #home {
     transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed) !important;
@@ -41,7 +41,7 @@ body {
     border-bottom: 1px solid var(--nav-border);
 }
 
-.hero-section, #home, .bg-light.py-5 {
+#title, .hero-section, #home {
     background-color: var(--hero-bg) !important;
     color: var(--body-text) !important;
     border-radius: 20px;
@@ -49,7 +49,7 @@ body {
 }
 
 /* ==========================================================================
-   4. CARD 
+   4. CARD E LISTE
    ========================================================================== */
 .card {
     background-color: var(--card-bg) !important;
@@ -58,8 +58,14 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.list-group-item {
+    background-color: var(--card-bg) !important;
+    color: var(--body-text) !important;
+    border-color: var(--nav-border) !important;
+}
+
 /* ==========================================================================
-   5. BOTTONI
+   5. BOTTONI 
    ========================================================================== */
 .contact-item {
     display: inline-flex !important;
@@ -67,7 +73,7 @@ body {
     justify-content: center;
     gap: 12px;
     padding: 12px 28px; 
-    min-width: 180px;    
+    min-width: 200px; 
     border-radius: 12px;
     font-weight: 600;
     text-decoration: none !important;
@@ -76,30 +82,44 @@ body {
     border: none !important;
 }
 
-.contact-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    filter: brightness(1.1);
-}
-
-.btn-github, [href*="github.com"] {
+.github-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 40px !important;
     background-color: #24292e !important;
     color: #ffffff !important;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
 }
 
-.btn-linkedin, [href*="linkedin.com"] {
+.github-button:hover {
+    background-color: #444 !important;
+    transform: scale(1.02);
+}
+
+.btn-linkedin, [href*="linkedin.com"].contact-item {
     background-color: #0077b5 !important;
     color: #ffffff !important;
 }
 
-.btn-credly {
+.btn-github, [href*="github.com"].contact-item {
+    background-color: #24292e !important;
+    color: #ffffff !important;
+}
+
+.btn-credly, [href*="credly.com"].contact-item {
     background-color: #ff6b00 !important;
     color: #ffffff !important;
 }
 
-.btn-credly:hover {
+.btn-credly:hover, [href*="credly.com"].contact-item:hover {
     background-color: #e65a00 !important;
     color: #ffffff !important;
+    filter: none !important; 
 }
 
 /* ==========================================================================
